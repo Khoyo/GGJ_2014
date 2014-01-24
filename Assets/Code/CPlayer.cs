@@ -14,13 +14,15 @@ public class CPlayer : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-	
+		m_fAngleY = 0.0f;
+		m_fTimerJump = 0.0f;
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-	
+		Move();
+		MoveHead();
 	}
 
 	void Move()
@@ -29,28 +31,22 @@ public class CPlayer : MonoBehaviour
 		Vector3 vForward = new Vector3(Mathf.Sin(fAngleX),0, Mathf.Cos(fAngleX));
 		Vector3 vRight = new Vector3(Mathf.Sin(fAngleX + 3.14f/2.0f),0, Mathf.Cos(fAngleX + 3.14f/2.0f));
 		Vector3 vUp = new Vector3(0,1,0);
-		bool bAnimActive = false;
-		
+
 		if(CApoilInput.InputPlayer.MoveForward)
 		{
 			gameObject.rigidbody.AddForce(m_fVelocityWalk*vForward);
-			bAnimActive = true;
 		}
 		if(CApoilInput.InputPlayer.MoveBackward)
 		{
 			gameObject.rigidbody.AddForce(-m_fVelocityWalk*vForward);
-			bAnimActive = true;
-			
 		}
 		if(CApoilInput.InputPlayer.MoveLeft)
 		{
 			gameObject.rigidbody.AddForce(-m_fVelocityWalk*vRight);
-			bAnimActive = true;
 		}
 		if(CApoilInput.InputPlayer.MoveRight)
 		{
 			gameObject.rigidbody.AddForce(m_fVelocityWalk*vRight);
-			bAnimActive = true;
 		}
 		if(!CApoilInput.InputPlayer.MoveForward && !CApoilInput.InputPlayer.MoveBackward && !CApoilInput.InputPlayer.MoveLeft && !CApoilInput.InputPlayer.MoveRight)
 		{
