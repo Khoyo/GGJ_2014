@@ -3,7 +3,15 @@ using System.Collections;
 
 public class CPlayer : MonoBehaviour 
 {
+	enum EState
+	{
+		e_Furtif,
+		e_Bourin,
+		e_Charismatique,
+		e_MauvaisGout,
+	}
 
+	EState m_eState;
 	float m_fVelocityWalk = 15.0f;
 	float m_fVelocityRotation = 0.2f;
 	float m_fVelocityJump = 250.0f;
@@ -16,6 +24,7 @@ public class CPlayer : MonoBehaviour
 	{
 		m_fAngleY = 0.0f;
 		m_fTimerJump = 0.0f;
+		m_eState = EState.e_Furtif;
 	}
 	
 	// Update is called once per frame
@@ -23,6 +32,37 @@ public class CPlayer : MonoBehaviour
 	{
 		Move();
 		MoveHead();
+		SwitchState();
+		switch(m_eState)
+		{
+			case EState.e_Furtif:
+			{
+				break;
+			}
+			case EState.e_Bourin:
+			{
+				break;
+			}
+			case EState.e_Charismatique:
+			{
+				break;
+			}
+			case EState.e_MauvaisGout:
+			{
+				break;
+			}
+		}
+	}
+
+	void OnGUI()
+	{
+		if(CGame.m_bDebug)
+			DisplayDebug();
+	}
+
+	void DisplayDebug()
+	{
+		GUI.Label(new Rect(10, 10, 100, 20), System.Convert.ToString(m_eState));
 	}
 
 	void Move()
@@ -79,5 +119,27 @@ public class CPlayer : MonoBehaviour
 			m_fAngleY = fAngleMin;
 		
 		gameObject.transform.FindChild("Head").RotateAroundLocal(new Vector3(1,0,0), m_fVelocityRotation * (m_fAngleY - fAngleBeforeY));
+	}
+
+	void SwitchState()
+	{
+		if(CApoilInput.InputPlayer.SwitchFurtif)
+		{
+			m_eState = EState.e_Furtif;
+		}
+		if(CApoilInput.InputPlayer.SwitchBourin)
+		{
+			m_eState = EState.e_Bourin;
+		}
+		if(CApoilInput.InputPlayer.SwitchCharismatique)
+		{
+			m_eState = EState.e_Charismatique;
+		}
+
+		//DEBUG
+		if(CApoilInput.DebugNum4)
+		{
+			m_eState = EState.e_MauvaisGout;
+		}
 	}
 }

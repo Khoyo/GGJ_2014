@@ -8,6 +8,9 @@ public struct SPlayerInput
 	public bool MoveForward;
 	public bool MoveBackward;
 	public bool Jump;
+	public bool SwitchFurtif;
+	public bool SwitchBourin;
+	public bool SwitchCharismatique;
 	public float MouseAngleX;
 	public float MouseAngleY;
 }
@@ -19,6 +22,7 @@ public class CApoilInput
 	public static bool Quit;
 
 	//Debug
+	public static bool DebugNum4;
 	public static bool DebugF9;
 	public static bool DebugF10;
 	public static bool DebugF11;
@@ -44,10 +48,15 @@ public class CApoilInput
 		InputPlayer.MouseAngleX = Input.GetAxis("Mouse X");
 		InputPlayer.MouseAngleY = -Input.GetAxis("Mouse Y");
 
+		InputPlayer.SwitchFurtif = Input.GetKeyDown(KeyCode.Keypad1);
+		InputPlayer.SwitchBourin = Input.GetKeyDown(KeyCode.Keypad2);
+		InputPlayer.SwitchCharismatique = Input.GetKeyDown(KeyCode.Keypad3);
+
 		InputPlayer.Jump = Input.GetKeyDown(KeyCode.Space);
 		
 		Quit = Input.GetKeyDown(KeyCode.Escape);
 
+		DebugNum4 = Input.GetKeyDown(KeyCode.Keypad4);
 		DebugF9 = Input.GetKeyDown(KeyCode.F9);
 		DebugF10 = Input.GetKeyDown(KeyCode.F10);
 		DebugF11 = Input.GetKeyDown(KeyCode.F11);
