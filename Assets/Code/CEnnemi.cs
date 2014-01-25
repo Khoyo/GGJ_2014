@@ -8,7 +8,9 @@ public class CEnnemi : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		/*GameObject player = GameObject.Find("Player");
+		GetComponent<NavMeshAgent>().SetDestination(player.transform.position);
+		*/
 	}
 	
 	// Update is called once per frame
@@ -19,14 +21,13 @@ public class CEnnemi : MonoBehaviour {
 			//print ("Blocked by " + hit.collider.name);
 			m_bHaveLineOfSight = false;
 		}
-
-		
 		else {
 			m_bHaveLineOfSight = true;
 		}
 
 		if(m_DebugRay)
 			Debug.DrawRay(transform.position, player.transform.position-transform.position, m_bHaveLineOfSight?Color.green:Color.red);
+
 	}
 
 
