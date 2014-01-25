@@ -12,11 +12,11 @@ GameObject:
   - 136: {fileID: 13600000}
   - 23: {fileID: 2300000}
   - 195: {fileID: 19500000}
-  - 114: {fileID: 11400000}
   - 114: {fileID: 11400002}
+  - 114: {fileID: 11400000}
   - 143: {fileID: 14300000}
   m_Layer: 8
-  m_Name: Infirmier
+  m_Name: Boss
   m_TagString: Ennemies
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,8 +33,9 @@ GameObject:
   - 33: {fileID: 3300002}
   - 64: {fileID: 6400000}
   - 23: {fileID: 2300002}
+  - 114: {fileID: 11400004}
   m_Layer: 0
-  m_Name: Dos
+  m_Name: Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,9 +52,8 @@ GameObject:
   - 33: {fileID: 3300004}
   - 64: {fileID: 6400002}
   - 23: {fileID: 2300004}
-  - 114: {fileID: 11400004}
   m_Layer: 0
-  m_Name: Face
+  m_Name: Dos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,11 +66,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.699366093, y: 2.47874069, z: 8.05944633}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 7.13586521, y: 2.47874069, z: 4.08217049}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
-  - {fileID: 400004}
   - {fileID: 400002}
+  - {fileID: 400004}
   m_Father: {fileID: 0}
 --- !u!4 &400002
 Transform:
@@ -78,8 +78,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
-  m_LocalRotation: {x: -3.09086232e-08, y: .707106829, z: -.707106829, w: -3.09086232e-08}
-  m_LocalPosition: {x: 0, y: 0, z: -.0436630249}
+  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106829}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: .128000006, y: 1, z: .189999998}
   m_Children: []
   m_Father: {fileID: 400000}
@@ -89,8 +89,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100004}
-  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -3.09086232e-08, y: .707106829, z: -.707106829, w: -3.09086232e-08}
+  m_LocalPosition: {x: 0, y: 0, z: -.0436630249}
   m_LocalScale: {x: .128000006, y: 1, z: .189999998}
   m_Children: []
   m_Father: {fileID: 400000}
@@ -127,7 +127,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 11286dd8f0e29f94abfd2a762799f37c, type: 2}
+  - {fileID: 2100000, guid: 6db05ba2521894746ac54d4ccb45a3dc, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -148,7 +148,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 5a1d4e87e51bdfa4eaee49d54c13c660, type: 2}
+  - {fileID: 2100000, guid: 11286dd8f0e29f94abfd2a762799f37c, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -212,11 +212,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c42a3e212e0772b44a44d0733a344ef6, type: 3}
+  m_Script: {fileID: 11500000, guid: 177f929d6922bc547b1634e810f11c58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_bHaveLineOfSight: 0
-  m_nLife: 10
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -225,15 +223,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 177f929d6922bc547b1634e810f11c58, type: 3}
+  m_Script: {fileID: 11500000, guid: c42a3e212e0772b44a44d0733a344ef6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_bHaveLineOfSight: 0
+  m_nLife: 10
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100004}
+  m_GameObject: {fileID: 100002}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2872e9726d20eee4091a07d461ffc3f0, type: 3}

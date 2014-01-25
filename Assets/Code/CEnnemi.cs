@@ -19,7 +19,7 @@ public class CEnnemi : MonoBehaviour {
 		Vector3 lineOfSight = player.transform.position-transform.position;
 		RaycastHit hit;
 		Physics.Raycast(new Ray(transform.position, lineOfSight), out hit, lineOfSight.magnitude, ~(1<<8));
-		if (hit.collider.name != "Player") {
+		if (hit.collider != null && hit.collider.name != "Player") {
 			//print ("Blocked by " + hit.collider.name);
 			m_bHaveLineOfSight = false;
 		}
