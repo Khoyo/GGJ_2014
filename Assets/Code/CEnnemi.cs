@@ -4,6 +4,7 @@ using System.Collections;
 public class CEnnemi : MonoBehaviour {
 
 	public bool m_bHaveLineOfSight;
+	public int m_nLife = 10;
 	const bool m_DebugRay = true;
 
 	// Use this for initialization
@@ -29,6 +30,14 @@ public class CEnnemi : MonoBehaviour {
 		if(m_DebugRay)
 			Debug.DrawRay(transform.position, player.transform.position-transform.position, m_bHaveLineOfSight?Color.green:Color.red);
 
+	}
+
+	public void TakeBullet()
+	{
+		//Debug.Log ("Die");
+		m_nLife--;
+		if(m_nLife < 0)
+			Object.Destroy(gameObject);
 	}
 
 }

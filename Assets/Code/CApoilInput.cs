@@ -13,6 +13,7 @@ public struct SPlayerInput
 	public bool SwitchFurtif;
 	public bool SwitchBourin;
 	public bool SwitchCharismatique;
+	public bool Fire;
 	public float MouseAngleX;
 	public float MouseAngleY;
 }
@@ -57,6 +58,8 @@ public class CApoilInput
 		InputPlayer.Jump = Input.GetKeyDown(KeyCode.Space);
 		InputPlayer.Sneak = Input.GetKey(KeyCode.LeftControl);
 		InputPlayer.Run = Input.GetKey(KeyCode.LeftShift);
+
+		InputPlayer.Fire =  Input.GetMouseButton(0);
 		
 		Quit = Input.GetKeyDown(KeyCode.Escape);
 

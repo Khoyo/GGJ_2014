@@ -4,6 +4,7 @@ using System.Collections;
 public class CPlayer : MonoBehaviour 
 {
 	public Texture m_TexturCrossHair;
+	public GameObject m_Impact;
 
 	enum EState
 	{
@@ -21,6 +22,8 @@ public class CPlayer : MonoBehaviour
 	float m_fAngleY;
 	float m_fTimerJump;
 	float m_fTimerJumpMax = 1.0f;
+	float m_fTimerGateling;
+	float m_fCadenceGateling = 1/10.0f;
 
 	Vector3 vMoveDirection = Vector3.zero;
 
@@ -37,6 +40,7 @@ public class CPlayer : MonoBehaviour
 		m_fAngleY = 0.0f;
 		m_fTimerJump = 0.0f;
 		m_fVelocityRun = 1.0f;
+		m_fTimerGateling = 0.0f;
 		m_eState = EState.e_Furtif;
 
 		m_bCanSneak = false;
@@ -185,11 +189,34 @@ public class CPlayer : MonoBehaviour
 		}
 		else
 			m_fVelocityRun = 1.0f;
+
+		if(CApoilInput.InputPlayer.Fire)
+		{
+			FireGatling();
+		}
 	}
 
 	void FireGatling()
 	{
+		RaycastHit hit;
+		GameObject cam = gameObject.transform.FindChild("Head").FindChild("MainCamera").gameObject;
+		Physics.Raycast(cam.transform.position, cam.transform.forward,out hit);
 
+		if(m_fTimerGateling >= 0.0f)
+			m_fTimerGateling -= Time.deltaTime;
+
+		if (hit.collider != null && hit.collider.CompareTag("Ennemies") && m_fTimerGateling < 0.0f)
+		{
+			//print ("Blocked by " + hit.collider.name);
+			//Object.Destroy(collider.gameObject);
+			m_fTimerGateling = m_fCadenceGateling;
+			hit.collider.gameObject.GetComponent<CEnnemi>().TakeBullet();
+			GameObject newImpact;
+			newImpact = (Instantiate(m_Impact, hit.collider.gameObject. transform.position, Quaternion.identity) as GameObject);
+			newImpact.transform.parent = hit.collider.gameObject.transform;
+
+			
+		}
 	}
 
 	void SwitchState()
