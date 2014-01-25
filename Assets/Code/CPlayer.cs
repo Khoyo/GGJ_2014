@@ -77,6 +77,10 @@ public class CPlayer : MonoBehaviour
 				{
 					FireGatling();
 				}
+				else
+				{
+				gameObject.transform.FindChild("Head").FindChild("light").gameObject.SetActive(false);
+				}
 				m_Batteuse.transform.Rotate(Vector3.forward,m_fCoeffVelocityGateling*600* Time.deltaTime);
 
 				break;
@@ -223,6 +227,7 @@ public class CPlayer : MonoBehaviour
 		}
 
 		m_fCoeffVelocityGateling = 1.0f;
+		gameObject.transform.FindChild("Head").FindChild("light").gameObject.SetActive(true);
 	}
 
 	void SwitchState()
@@ -252,6 +257,8 @@ public class CPlayer : MonoBehaviour
 				m_bCanSneak = false;
 				m_bJump = true;
 				m_bCanRun = false;
+				m_Batteuse.SetActive(false);
+				m_Couteau.SetActive(false);
 				break;
 			}
 			case EState.e_MauvaisGout:
@@ -259,6 +266,8 @@ public class CPlayer : MonoBehaviour
 				m_bCanSneak = false;
 				m_bJump = true;
 				m_bCanRun = true;
+				m_Batteuse.SetActive(false);
+				m_Couteau.SetActive(false);
 				break;
 			}
 		}
