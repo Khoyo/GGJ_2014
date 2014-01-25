@@ -4312,8 +4312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TexturCrossHair: {fileID: 2800000, guid: a510c5882680a044eb0bbc094ae02360, type: 3}
-  m_TextureBlack_up: {fileID: 2800000, guid: f867af3941a5c824c96b6482a867d682, type: 3}
-  m_TextureBlack_down: {fileID: 2800000, guid: cf231adbb01a5e443a15878e66e2aaf2, type: 3}
+  m_TextureBlack: {fileID: 2800000, guid: 7edb3984481f14947af98798482f662d, type: 3}
   m_Impact: {fileID: 100000, guid: df4e2c096701f6746b3628da2a2127d4, type: 2}
   m_Batteuse: {fileID: 1828878058}
   m_Couteau: {fileID: 1273538098}
@@ -4865,6 +4864,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 59744b4b75abdc34ca63304a2a316200, type: 2}
+      propertyPath: m_TextureBlack
+      value: 
+      objectReference: {fileID: 2800000, guid: 7edb3984481f14947af98798482f662d, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 59744b4b75abdc34ca63304a2a316200, type: 2}
   m_RootGameObject: {fileID: 1798890606}

@@ -4,8 +4,7 @@ using System.Collections;
 public class CPlayer : MonoBehaviour 
 {
 	public Texture m_TexturCrossHair;
-	public Texture m_TextureBlack_up;
-	public Texture m_TextureBlack_down;
+	public Texture m_TextureBlack;
 	public GameObject m_Impact;
 
 	enum EState
@@ -140,8 +139,9 @@ public class CPlayer : MonoBehaviour
 
 		if(m_bIsInSwitch)
 		{
-			float fPosY = CApoilMath.InterpolationLinear(m_fTimerSwitch, 0.0f, m_fTimerSwitchMax, 0.0f, -fHeight);
-			GUI.DrawTexture(new Rect(0, fPosY, CGame.m_fWidth, fHeight),  m_TextureBlack_up);
+			float fPosY = CApoilMath.InterpolationLinear(m_fTimerSwitch, 0.0f, m_fTimerSwitchMax, 0.0f, 3.14159f);
+			GUI.color = new Color(1.0f, 1.0f, 1.0f, Mathf.Sqrt( Mathf.Sin(fPosY)));
+			GUI.DrawTexture(new Rect(0, 0, CGame.m_fWidth, CGame.m_fHeight),  m_TextureBlack);
 		}
 	}
 
@@ -319,13 +319,16 @@ public class CPlayer : MonoBehaviour
 		if(m_fTimerSwitch > 0.0f)
 		{
 			m_fTimerSwitch -= Time.deltaTime;
+			if(m_fTimerSwitch < m_fTimerSwitchMax/2.0f)
+			{
+				m_eState = m_eStateToGo;
+				SwitchState();
+			}
 		}
 		else
 		{
-
-			m_eState = m_eStateToGo;
 			m_bIsInSwitch = false;
-			SwitchState();
+
 		}
 	}
 
