@@ -16,5 +16,8 @@ public class CGame : MonoBehaviour
 	void Update () 
 	{
 		CApoilInput.Process(Time.deltaTime);
+
+		if(CApoilInput.Quit)
+			Application.Quit();
 	}
 }
