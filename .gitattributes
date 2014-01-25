@@ -7,6 +7,7 @@
 *.asset  eol=lf
 *.prefab text eol=lf
 *.mat text eol=lf
+*.unity text eol=lf
 *.sln    merge=union 
 *.csproj merge=union 
 *.vbproj merge=union 
