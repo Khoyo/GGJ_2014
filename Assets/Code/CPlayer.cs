@@ -24,6 +24,7 @@ public class CPlayer : MonoBehaviour
 	float m_fTimerJumpMax = 1.0f;
 	float m_fTimerGateling;
 	float m_fCadenceGateling = 1/10.0f;
+	float m_fCoeffVelocityGateling;
 
 	Vector3 vMoveDirection = Vector3.zero;
 
@@ -48,6 +49,7 @@ public class CPlayer : MonoBehaviour
 		m_bCanRun = false;
 		m_SwitchState = false;
 		SwitchState();
+		m_fCoeffVelocityGateling = 0.0f;
 	}
 	
 	// Update is called once per frame
@@ -67,14 +69,16 @@ public class CPlayer : MonoBehaviour
 		{
 			case EState.e_Furtif:
 			{
-			m_Batteuse.SetActive(false);
-			m_Couteau.SetActive(true);
 				break;
 			}
 			case EState.e_Bourin:
 			{
-			m_Batteuse.SetActive(true);
-			m_Couteau.SetActive(false);
+				if(CApoilInput.InputPlayer.Fire)
+				{
+					FireGatling();
+				}
+				m_Batteuse.transform.Rotate(Vector3.forward,m_fCoeffVelocityGateling*600* Time.deltaTime);
+
 				break;
 			}
 			case EState.e_Charismatique:
@@ -89,6 +93,11 @@ public class CPlayer : MonoBehaviour
 
 		if(m_fTimerJump >= 0.0f)
 			m_fTimerJump -= Time.deltaTime;
+
+		if(m_fCoeffVelocityGateling > 0.0f)
+			m_fCoeffVelocityGateling -= Time.deltaTime;
+		else
+			m_fCoeffVelocityGateling = 0.0f;
 	}
 
 	void OnGUI()
@@ -190,17 +199,13 @@ public class CPlayer : MonoBehaviour
 		else
 			m_fVelocityRun = 1.0f;
 
-		if(CApoilInput.InputPlayer.Fire)
-		{
-			FireGatling();
-		}
 	}
 
 	void FireGatling()
 	{
 		RaycastHit hit;
 		GameObject cam = gameObject.transform.FindChild("Head").FindChild("MainCamera").gameObject;
-		Physics.Raycast(cam.transform.position, cam.transform.forward,out hit,Mathf.Infinity, LayerMask.NameToLayer("Ennemies"));
+		Physics.Raycast(cam.transform.position, cam.transform.forward,out hit);
 
 		if(m_fTimerGateling >= 0.0f)
 			m_fTimerGateling -= Time.deltaTime;
@@ -217,10 +222,7 @@ public class CPlayer : MonoBehaviour
 
 		}
 
-		if(hit.collider != null)
-			Debug.DrawRay(cam.transform.position,10* cam.transform.forward, Color.blue);
-		else
-			Debug.DrawRay(cam.transform.position, 10*cam.transform.forward, Color.red);
+		m_fCoeffVelocityGateling = 1.0f;
 	}
 
 	void SwitchState()
@@ -232,7 +234,8 @@ public class CPlayer : MonoBehaviour
 				m_bCanSneak = true;
 				m_bJump = true;
 				m_bCanRun = true;
-				gameObject.transform.FindChild("Head").FindChild("Couteau").gameObject.SetActive(true);
+				m_Batteuse.SetActive(false);
+				m_Couteau.SetActive(true);
 				break;
 			}
 			case EState.e_Bourin:
@@ -240,7 +243,8 @@ public class CPlayer : MonoBehaviour
 				m_bCanSneak = false;
 				m_bJump = false;
 				m_bCanRun = true;
-				gameObject.transform.FindChild("Head").FindChild("Couteau").gameObject.SetActive(false);
+				m_Batteuse.SetActive(true);
+				m_Couteau.SetActive(false);
 				break;
 			}
 			case EState.e_Charismatique:
@@ -248,7 +252,6 @@ public class CPlayer : MonoBehaviour
 				m_bCanSneak = false;
 				m_bJump = true;
 				m_bCanRun = false;
-				gameObject.transform.FindChild("Head").FindChild("Couteau").gameObject.SetActive(false);
 				break;
 			}
 			case EState.e_MauvaisGout:
@@ -256,7 +259,6 @@ public class CPlayer : MonoBehaviour
 				m_bCanSneak = false;
 				m_bJump = true;
 				m_bCanRun = true;
-				gameObject.transform.FindChild("Head").FindChild("Couteau").gameObject.SetActive(false);
 				break;
 			}
 		}
