@@ -194,7 +194,7 @@ public class CPlayer : MonoBehaviour
 	{
 		RaycastHit hit;
 		GameObject cam = gameObject.transform.FindChild("Head").FindChild("MainCamera").gameObject;
-		Physics.Raycast(cam.transform.position, cam.transform.forward,out hit);
+		Physics.Raycast(cam.transform.position, cam.transform.forward,out hit,Mathf.Infinity, LayerMask.NameToLayer("Ennemies"));
 
 		if(m_fTimerGateling >= 0.0f)
 			m_fTimerGateling -= Time.deltaTime;
@@ -205,12 +205,16 @@ public class CPlayer : MonoBehaviour
 			//Object.Destroy(collider.gameObject);
 			m_fTimerGateling = m_fCadenceGateling;
 			hit.collider.gameObject.GetComponent<CEnnemi>().TakeBullet();
-			GameObject newImpact;
-			newImpact = (Instantiate(m_Impact, hit.collider.gameObject. transform.position, Quaternion.identity) as GameObject);
-			newImpact.transform.parent = hit.collider.gameObject.transform;
+			//GameObject newImpact;
+			//newImpact = (Instantiate(m_Impact, hit.collider.gameObject. transform.position, Quaternion.identity) as GameObject);
+			//newImpact.transform.parent = hit.collider.gameObject.transform;
 
-			
 		}
+
+		if(hit.collider != null)
+			Debug.DrawRay(cam.transform.position,10* cam.transform.forward, Color.blue);
+		else
+			Debug.DrawRay(cam.transform.position, 10*cam.transform.forward, Color.red);
 	}
 
 	void SwitchState()
