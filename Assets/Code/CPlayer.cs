@@ -29,6 +29,8 @@ public class CPlayer : MonoBehaviour
 	bool m_bCanRun;
 	bool m_SwitchState;
 
+	public GameObject m_Batteuse, m_Couteau;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -61,10 +63,14 @@ public class CPlayer : MonoBehaviour
 		{
 			case EState.e_Furtif:
 			{
+			m_Batteuse.SetActive(false);
+			m_Couteau.SetActive(true);
 				break;
 			}
 			case EState.e_Bourin:
 			{
+			m_Batteuse.SetActive(true);
+			m_Couteau.SetActive(false);
 				break;
 			}
 			case EState.e_Charismatique:
