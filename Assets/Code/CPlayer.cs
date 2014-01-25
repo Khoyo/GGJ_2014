@@ -138,15 +138,25 @@ public class CPlayer : MonoBehaviour
 		Vector3 vRight = new Vector3(Mathf.Sin(fAngleX + 3.14f/2.0f),0, Mathf.Cos(fAngleX + 3.14f/2.0f));
 		
 		CharacterController controller = GetComponent<CharacterController>();
+
+		float vspeed = vMoveDirection.y;
+
+		vMoveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+		vMoveDirection = transform.TransformDirection(vMoveDirection);
+		vMoveDirection *= m_fVelocityWalk * m_fVelocityRun;
+
+		vMoveDirection.y = vspeed;
+
+
+		vMoveDirection.y -= 20 * Time.deltaTime;
+
 		if (controller.isGrounded) {
-			vMoveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-			vMoveDirection = transform.TransformDirection(vMoveDirection);
-			vMoveDirection *= m_fVelocityWalk * m_fVelocityRun;
 			if (CApoilInput.InputPlayer.Jump && m_bCanRun)
 				vMoveDirection.y = m_fVelocityJump;
+			else
+				vMoveDirection.y = Mathf.Max(0, vMoveDirection.y);
 			
 		}
-		vMoveDirection.y -= 20 * Time.deltaTime;
 		controller.Move(vMoveDirection * Time.deltaTime);
 
 
