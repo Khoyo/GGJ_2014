@@ -23,9 +23,13 @@ public class CEnnemi : MonoBehaviour {
 			//print ("Blocked by " + hit.collider.name);
 			m_bHaveLineOfSight = false;
 		}
-		else {
+		else 
+		{
 			m_bHaveLineOfSight = true;
 		}
+
+		if(m_nLife < 0)
+			Object.Destroy(gameObject);
 
 		if(m_DebugRay)
 			Debug.DrawRay(transform.position, player.transform.position-transform.position, m_bHaveLineOfSight?Color.green:Color.red);
@@ -36,8 +40,12 @@ public class CEnnemi : MonoBehaviour {
 	{
 		//Debug.Log ("Die");
 		m_nLife--;
-		if(m_nLife < 0)
-			Object.Destroy(gameObject);
+
+	}
+
+	public void TakeCut()
+	{
+		m_nLife = -1;
 	}
 
 }

@@ -24,7 +24,10 @@ public class CPlayer : MonoBehaviour
 	float m_fTimerJumpMax = 1.0f;
 	float m_fTimerGateling;
 	float m_fCadenceGateling = 1/10.0f;
+	float m_fTimerCut;
+	float m_fCadenceCut = 1.0f;
 	float m_fCoeffVelocityGateling;
+	float m_fRadiusCut = 1.5f;
 
 	Vector3 vMoveDirection = Vector3.zero;
 
@@ -50,6 +53,8 @@ public class CPlayer : MonoBehaviour
 		m_SwitchState = false;
 		SwitchState();
 		m_fCoeffVelocityGateling = 0.0f;
+
+		gameObject.transform.FindChild("Head").FindChild("light").gameObject.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -69,6 +74,10 @@ public class CPlayer : MonoBehaviour
 		{
 			case EState.e_Furtif:
 			{
+				if(CApoilInput.InputPlayer.Fire)
+				{
+					FireCut();
+				}
 				break;
 			}
 			case EState.e_Bourin:
@@ -79,7 +88,7 @@ public class CPlayer : MonoBehaviour
 				}
 				else
 				{
-				gameObject.transform.FindChild("Head").FindChild("light").gameObject.SetActive(false);
+					gameObject.transform.FindChild("Head").FindChild("light").gameObject.SetActive(false);
 				}
 				m_Batteuse.transform.Rotate(Vector3.forward,m_fCoeffVelocityGateling*600* Time.deltaTime);
 
@@ -228,6 +237,28 @@ public class CPlayer : MonoBehaviour
 
 		m_fCoeffVelocityGateling = 1.0f;
 		gameObject.transform.FindChild("Head").FindChild("light").gameObject.SetActive(true);
+	}
+
+	void FireCut()
+	{
+		RaycastHit hit;
+		GameObject cam = gameObject.transform.FindChild("Head").FindChild("MainCamera").gameObject;
+		Physics.Raycast(cam.transform.position, cam.transform.forward,out hit, m_fRadiusCut);
+		
+		if(m_fTimerCut >= 0.0f)
+			m_fTimerCut -= Time.deltaTime;
+		
+		if (hit.collider != null && hit.collider.CompareTag("Ennemies") && m_fTimerCut < 0.0f)
+		{
+			//print ("Blocked by " + hit.collider.name);
+			//Object.Destroy(collider.gameObject);
+			m_fTimerCut = m_fCadenceCut;
+			hit.collider.gameObject.GetComponent<CEnnemi>().TakeCut();
+			//GameObject newImpact;
+			//newImpact = (Instantiate(m_Impact, hit.collider.gameObject. transform.position, Quaternion.identity) as GameObject);
+			//newImpact.transform.parent = hit.collider.gameObject.transform;
+			
+		}
 	}
 
 	void SwitchState()
