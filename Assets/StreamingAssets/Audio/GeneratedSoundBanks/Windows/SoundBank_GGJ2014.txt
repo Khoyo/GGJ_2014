@@ -1,0 +1,10 @@
+Event	ID	Name			Wwise Object Path	Notes
+	434087672	Play_GunFire			\Default Work Unit\Play_GunFire	
+	1315091481	Play_GunTouch			\Default Work Unit\Play_GunTouch	
+	1583215645	Play_WilhelmScream			\Default Work Unit\Play_WilhelmScream	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	181213917	Gun_Touch	C:\Users\tim-asus\Desktop\Wwise_GGJ2014\GGJ_2014\.cache\Windows\sfx\gun_touch_ddc98ef4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Gun_Touch		243768
+	383290482	Die_ennemies	C:\Users\tim-asus\Desktop\Wwise_GGJ2014\GGJ_2014\.cache\Windows\sfx\die_ennemies_ddc98ef4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Die_ennemies		197076
+	627825812	Gun_Fire_01	C:\Users\tim-asus\Desktop\Wwise_GGJ2014\GGJ_2014\.cache\Windows\sfx\gun_fire_ddc98ef4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Gun_Fire_01		206940
+

@@ -27,7 +27,7 @@ public class CPlayer : MonoBehaviour
 	float m_fTimerCut;
 	float m_fCadenceCut = 1.0f;
 	float m_fCoeffVelocityGateling;
-	float m_fRadiusCut = 1.5f;
+	float m_fRadiusCut = 2.0f;
 
 	Vector3 vMoveDirection = Vector3.zero;
 
@@ -35,6 +35,8 @@ public class CPlayer : MonoBehaviour
 	bool m_bJump;
 	bool m_bCanRun;
 	bool m_SwitchState;
+	bool m_bSneak;
+	int m_nNbFrameGatling;
 
 	public GameObject m_Batteuse, m_Couteau;
 
@@ -54,6 +56,8 @@ public class CPlayer : MonoBehaviour
 		SwitchState();
 		m_fCoeffVelocityGateling = 0.0f;
 
+		m_bSneak = false;
+		m_nNbFrameGatling = 0;
 		gameObject.transform.FindChild("Head").FindChild("light").gameObject.SetActive(false);
 	}
 	
@@ -88,6 +92,7 @@ public class CPlayer : MonoBehaviour
 				}
 				else
 				{
+					m_nNbFrameGatling = 0;
 					gameObject.transform.FindChild("Head").FindChild("light").gameObject.SetActive(false);
 				}
 				m_Batteuse.transform.Rotate(Vector3.forward,m_fCoeffVelocityGateling*600* Time.deltaTime);
@@ -200,9 +205,15 @@ public class CPlayer : MonoBehaviour
 		if(CApoilInput.DebugF9)
 			Die ();
 
-		if(CApoilInput.InputPlayer.Sneak && m_bCanSneak)
+		if(CApoilInput.InputPlayer.Sneak && m_bCanSneak && !m_bSneak)
 		{
-
+			gameObject.transform.FindChild("Head").Translate(new Vector3(0,-1,0));
+			m_bSneak = true;
+		}
+		else if(!CApoilInput.InputPlayer.Sneak && m_bSneak)
+		{
+			gameObject.transform.FindChild("Head").Translate(new Vector3(0,1,0));
+			m_bSneak = false;
 		}
 
 		if(CApoilInput.InputPlayer.Run && m_bCanRun)
@@ -223,17 +234,28 @@ public class CPlayer : MonoBehaviour
 		if(m_fTimerGateling >= 0.0f)
 			m_fTimerGateling -= Time.deltaTime;
 
-		if (hit.collider != null && hit.collider.CompareTag("Ennemies") && m_fTimerGateling < 0.0f)
+		if(m_fTimerGateling < 0.0f)
 		{
-			//print ("Blocked by " + hit.collider.name);
-			//Object.Destroy(collider.gameObject);
+			m_nNbFrameGatling++;
+			if(m_nNbFrameGatling%2 == 0)
+			{
+				CSoundEngine.postEvent("Play_GunFire", gameObject);
+				m_nNbFrameGatling = 0;
+			}
 			m_fTimerGateling = m_fCadenceGateling;
-			hit.collider.gameObject.GetComponent<CEnnemi>().TakeBullet();
-			//GameObject newImpact;
-			//newImpact = (Instantiate(m_Impact, hit.collider.gameObject. transform.position, Quaternion.identity) as GameObject);
-			//newImpact.transform.parent = hit.collider.gameObject.transform;
-
+			if (hit.collider != null && hit.collider.CompareTag("Ennemies"))
+			{
+				//print ("Blocked by " + hit.collider.name);
+				//Object.Destroy(collider.gameObject);
+				hit.collider.gameObject.GetComponent<CEnnemi>().TakeBullet();
+				//GameObject newImpact;
+				//newImpact = (Instantiate(m_Impact, hit.collider.gameObject. transform.position, Quaternion.identity) as GameObject);
+				//newImpact.transform.parent = hit.collider.gameObject.transform;
+				
+			}
 		}
+
+
 
 		m_fCoeffVelocityGateling = 1.0f;
 		gameObject.transform.FindChild("Head").FindChild("light").gameObject.SetActive(true);

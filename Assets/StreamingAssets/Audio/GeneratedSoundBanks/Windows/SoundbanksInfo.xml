@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" SchemaVersion="9">
+	<RootPaths>
+		<ProjectRoot>C:\Users\tim-asus\Desktop\Wwise_GGJ2014\GGJ_2014\</ProjectRoot>
+		<SourceFilesRoot>C:\Users\tim-asus\Desktop\Wwise_GGJ2014\GGJ_2014\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>C:\Users\tim-asus\Desktop\Wwise_GGJ2014\GGJ_2014\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>C:\Users\tim-asus\Desktop\Wwise_GGJ2014\GGJ_2014\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents />
+	<StreamedFiles />
+	<SoundBanks>
+		<SoundBank Id="1355168291" Language="SFX">
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+			<IncludedEvents />
+			<IncludedDialogueEvents />
+			<ReferencedStreamedFiles />
+			<IncludedFullFiles />
+			<IncludedPrefetchFiles />
+			<ExternalSources />
+		</SoundBank>
+		<SoundBank Id="2466348812" Language="SFX">
+			<ShortName>SoundBank_GGJ2014</ShortName>
+			<Path>SoundBank_GGJ2014.bnk</Path>
+			<IncludedEvents>
+				<Event Id="434087672" Name="Play_GunFire" />
+				<Event Id="1315091481" Name="Play_GunTouch" />
+				<Event Id="1583215645" Name="Play_WilhelmScream" />
+			</IncludedEvents>
+			<IncludedDialogueEvents />
+			<ReferencedStreamedFiles />
+			<IncludedFullFiles>
+				<File Id="383290482" Language="SFX">
+					<ShortName>Die_ennemies.wav</ShortName>
+					<Path>sfx\die_ennemies_ddc98ef4.wem</Path>
+				</File>
+				<File Id="627825812" Language="SFX">
+					<ShortName>Gun_Fire.wav</ShortName>
+					<Path>sfx\gun_fire_ddc98ef4.wem</Path>
+				</File>
+				<File Id="181213917" Language="SFX">
+					<ShortName>Gun_Touch.wav</ShortName>
+					<Path>sfx\gun_touch_ddc98ef4.wem</Path>
+				</File>
+			</IncludedFullFiles>
+			<IncludedPrefetchFiles />
+			<ExternalSources />
+		</SoundBank>
+	</SoundBanks>
+</SoundBanksInfo>
