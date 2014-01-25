@@ -15,8 +15,10 @@ public class CEnnemi : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		GameObject player = GameObject.Find("Player");
+		Vector3 lineOfSight = player.transform.position-transform.position;
 		RaycastHit hit;
-		if ((hit = Physics.RaycastAll(new Ray(transform.position, player.transform.position-transform.position), (player.transform.position-transform.position).magnitude)[0]).collider.name != "Player" ) {
+		Physics.Raycast(new Ray(transform.position, lineOfSight), out hit, lineOfSight.magnitude);
+		if (hit.collider.name != "Player") {
 			//print ("Blocked by " + hit.collider.name);
 			m_bHaveLineOfSight = false;
 		}
