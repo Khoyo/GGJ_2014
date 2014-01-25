@@ -3,6 +3,8 @@ using System.Collections;
 
 public class CPlayer : MonoBehaviour 
 {
+	public Texture m_TexturCrossHair;
+
 	enum EState
 	{
 		e_Furtif,
@@ -83,6 +85,8 @@ public class CPlayer : MonoBehaviour
 	{
 		if(CGame.m_bDebug)
 			DisplayDebug();
+		Rect position = new Rect((Screen.width - m_TexturCrossHair.width) / 2, (Screen.height -  m_TexturCrossHair.height) /2, m_TexturCrossHair.width, m_TexturCrossHair.height);
+		GUI.DrawTexture(position, m_TexturCrossHair);
 	}
 
 	void DisplayDebug()
@@ -100,7 +104,7 @@ public class CPlayer : MonoBehaviour
 		if (controller.isGrounded) {
 			vMoveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 			vMoveDirection = transform.TransformDirection(vMoveDirection);
-			vMoveDirection *= m_fVelocityWalk;
+			vMoveDirection *= m_fVelocityWalk * m_fVelocityRun;
 			if (CApoilInput.InputPlayer.Jump && m_bCanRun)
 				vMoveDirection.y = m_fVelocityJump;
 			
@@ -163,13 +167,7 @@ public class CPlayer : MonoBehaviour
 		//DEBUG
 		if(CApoilInput.DebugF9)
 			Die ();
-/*
-		if(CApoilInput.InputPlayer.Jump && m_fTimerJump < 0.0f && m_bCanRun)
-		{
-			gameObject.rigidbody.AddForce(m_fVelocityJump*vUp);
-			m_fTimerJump = m_fTimerJumpMax;
-		}
-*/
+
 		if(CApoilInput.InputPlayer.Sneak && m_bCanSneak)
 		{
 
@@ -183,6 +181,11 @@ public class CPlayer : MonoBehaviour
 			m_fVelocityRun = 1.0f;
 	}
 
+	void FireGatling()
+	{
+
+	}
+
 	void SwitchState()
 	{
 		switch(m_eState)
@@ -192,6 +195,7 @@ public class CPlayer : MonoBehaviour
 				m_bCanSneak = true;
 				m_bJump = true;
 				m_bCanRun = true;
+				gameObject.transform.FindChild("Head").FindChild("Couteau").gameObject.SetActive(true);
 				break;
 			}
 			case EState.e_Bourin:
@@ -199,6 +203,7 @@ public class CPlayer : MonoBehaviour
 				m_bCanSneak = false;
 				m_bJump = false;
 				m_bCanRun = true;
+				gameObject.transform.FindChild("Head").FindChild("Couteau").gameObject.SetActive(false);
 				break;
 			}
 			case EState.e_Charismatique:
@@ -206,6 +211,7 @@ public class CPlayer : MonoBehaviour
 				m_bCanSneak = false;
 				m_bJump = true;
 				m_bCanRun = false;
+				gameObject.transform.FindChild("Head").FindChild("Couteau").gameObject.SetActive(false);
 				break;
 			}
 			case EState.e_MauvaisGout:
@@ -213,6 +219,7 @@ public class CPlayer : MonoBehaviour
 				m_bCanSneak = false;
 				m_bJump = true;
 				m_bCanRun = true;
+				gameObject.transform.FindChild("Head").FindChild("Couteau").gameObject.SetActive(false);
 				break;
 			}
 		}
