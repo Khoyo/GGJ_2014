@@ -7,6 +7,8 @@ public class CGame : MonoBehaviour
 
 	public bool LD_bDebug = false;
 	public static bool m_bDebug;
+	public static int m_fWidth = 1280;
+	public static int m_fHeight = 720;
 	// Use this for initialization
 	void Start () 
 	{

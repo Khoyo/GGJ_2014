@@ -4,6 +4,8 @@ using System.Collections;
 public class CPlayer : MonoBehaviour 
 {
 	public Texture m_TexturCrossHair;
+	public Texture m_TextureBlack_up;
+	public Texture m_TextureBlack_down;
 	public GameObject m_Impact;
 
 	enum EState
@@ -15,6 +17,8 @@ public class CPlayer : MonoBehaviour
 	}
 
 	EState m_eState;
+	EState m_eStateToGo;
+
 	float m_fVelocityWalk = 15.0f;
 	float m_fVelocityRun;
 	float m_fVelocityRotation = 0.2f;
@@ -28,6 +32,8 @@ public class CPlayer : MonoBehaviour
 	float m_fCadenceCut = 1.0f;
 	float m_fCoeffVelocityGateling;
 	float m_fRadiusCut = 2.0f;
+	float m_fTimerSwitch;
+	float m_fTimerSwitchMax = 2.0f;
 
 	Vector3 vMoveDirection = Vector3.zero;
 
@@ -35,6 +41,7 @@ public class CPlayer : MonoBehaviour
 	bool m_bJump;
 	bool m_bCanRun;
 	bool m_SwitchState;
+	bool m_bIsInSwitch;
 	bool m_bSneak;
 	int m_nNbFrameGatling;
 
@@ -47,12 +54,14 @@ public class CPlayer : MonoBehaviour
 		m_fTimerJump = 0.0f;
 		m_fVelocityRun = 1.0f;
 		m_fTimerGateling = 0.0f;
-		m_eState = EState.e_Furtif;
-
+		m_fTimerSwitch = 0.0f;
+		m_eState = EState.e_Charismatique;
+		m_eStateToGo = m_eState;
 		m_bCanSneak = false;
 		m_bJump = false;
 		m_bCanRun = false;
 		m_SwitchState = false;
+		m_bIsInSwitch = false;
 		SwitchState();
 		m_fCoeffVelocityGateling = 0.0f;
 
@@ -64,14 +73,16 @@ public class CPlayer : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		Move();
-		MoveHead();
-		InputsPlayer();
-
-		if(m_SwitchState)
+		if(!m_bIsInSwitch)
 		{
-			SwitchState();
-			m_SwitchState = false;
+			Move();
+			MoveHead();
+			InputsPlayer();
+		}
+
+		if(m_bIsInSwitch)
+		{
+			EntreDeuxChangement();
 		}
 
 		switch(m_eState)
@@ -124,6 +135,14 @@ public class CPlayer : MonoBehaviour
 			DisplayDebug();
 		Rect position = new Rect((Screen.width - m_TexturCrossHair.width) / 2, (Screen.height -  m_TexturCrossHair.height) /2, m_TexturCrossHair.width, m_TexturCrossHair.height);
 		GUI.DrawTexture(position, m_TexturCrossHair);
+
+		float fHeight = 450.0f;
+
+		if(m_bIsInSwitch)
+		{
+			float fPosY = CApoilMath.InterpolationLinear(m_fTimerSwitch, 0.0f, m_fTimerSwitchMax, 0.0f, -fHeight);
+			GUI.DrawTexture(new Rect(0, fPosY, CGame.m_fWidth, fHeight),  m_TextureBlack_up);
+		}
 	}
 
 	void DisplayDebug()
@@ -190,25 +209,29 @@ public class CPlayer : MonoBehaviour
 		
 		if(CApoilInput.InputPlayer.SwitchFurtif)
 		{
-			m_eState = EState.e_Furtif;
-			m_SwitchState = true;
+			m_eStateToGo = EState.e_Furtif;
+			m_fTimerSwitch = m_fTimerSwitchMax;
+			m_bIsInSwitch = true;
 		}
 		if(CApoilInput.InputPlayer.SwitchBourin)
 		{
-			m_eState = EState.e_Bourin;
-			m_SwitchState = true;
+			m_eStateToGo = EState.e_Bourin;
+			m_fTimerSwitch = m_fTimerSwitchMax;
+			m_bIsInSwitch = true;
 		}
 		if(CApoilInput.InputPlayer.SwitchCharismatique)
 		{
-			m_eState = EState.e_Charismatique;
-			m_SwitchState = true;
+			m_eStateToGo = EState.e_Charismatique;
+			m_fTimerSwitch = m_fTimerSwitchMax;
+			m_bIsInSwitch = true;
 		}
 		
 		//DEBUG
 		if(CApoilInput.DebugNum4)
 		{
-			m_eState = EState.e_MauvaisGout;
-			m_SwitchState = true;
+			m_eStateToGo = EState.e_MauvaisGout;
+			m_fTimerSwitch = m_fTimerSwitchMax;
+			m_bIsInSwitch = true;
 		}
 
 		//DEBUG
@@ -265,8 +288,6 @@ public class CPlayer : MonoBehaviour
 			}
 		}
 
-
-
 		m_fCoeffVelocityGateling = 1.0f;
 		gameObject.transform.FindChild("Head").FindChild("light").gameObject.SetActive(true);
 	}
@@ -290,6 +311,21 @@ public class CPlayer : MonoBehaviour
 			//newImpact = (Instantiate(m_Impact, hit.collider.gameObject. transform.position, Quaternion.identity) as GameObject);
 			//newImpact.transform.parent = hit.collider.gameObject.transform;
 			
+		}
+	}
+
+	void EntreDeuxChangement()
+	{
+		if(m_fTimerSwitch > 0.0f)
+		{
+			m_fTimerSwitch -= Time.deltaTime;
+		}
+		else
+		{
+
+			m_eState = m_eStateToGo;
+			m_bIsInSwitch = false;
+			SwitchState();
 		}
 	}
 
