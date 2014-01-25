@@ -29,7 +29,7 @@ public class CEnnemi : MonoBehaviour {
 		}
 
 		if(m_nLife < 0)
-			Object.Destroy(gameObject);
+			Die ();
 
 		if(m_DebugRay)
 			Debug.DrawRay(transform.position, player.transform.position-transform.position, m_bHaveLineOfSight?Color.green:Color.red);
@@ -38,7 +38,6 @@ public class CEnnemi : MonoBehaviour {
 
 	public void TakeBullet()
 	{
-		//Debug.Log ("Die");
 		m_nLife--;
 
 	}
@@ -46,6 +45,12 @@ public class CEnnemi : MonoBehaviour {
 	public void TakeCut()
 	{
 		m_nLife = -1;
+	}
+
+	void Die()
+	{
+		CSoundEngine.postEvent("Play_WilhelmScream", gameObject);
+		Object.Destroy(gameObject);
 	}
 
 }
