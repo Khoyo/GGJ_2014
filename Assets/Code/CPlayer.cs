@@ -38,7 +38,7 @@ public class CPlayer : MonoBehaviour
 	bool m_bSneak;
 	int m_nNbFrameGatling;
 
-	public GameObject m_Batteuse, m_Couteau;
+	public GameObject m_Batteuse, m_Couteau, m_Boobs;
 
 	// Use this for initialization
 	void Start () 
@@ -304,6 +304,7 @@ public class CPlayer : MonoBehaviour
 				m_bCanRun = true;
 				m_Batteuse.SetActive(false);
 				m_Couteau.SetActive(true);
+				m_Boobs.SetActive(false);
 				break;
 			}
 			case EState.e_Bourin:
@@ -313,6 +314,7 @@ public class CPlayer : MonoBehaviour
 				m_bCanRun = true;
 				m_Batteuse.SetActive(true);
 				m_Couteau.SetActive(false);
+				m_Boobs.SetActive(false);
 				break;
 			}
 			case EState.e_Charismatique:
@@ -322,6 +324,7 @@ public class CPlayer : MonoBehaviour
 				m_bCanRun = false;
 				m_Batteuse.SetActive(false);
 				m_Couteau.SetActive(false);
+				m_Boobs.SetActive(true);
 				break;
 			}
 			case EState.e_MauvaisGout:
@@ -331,6 +334,7 @@ public class CPlayer : MonoBehaviour
 				m_bCanRun = true;
 				m_Batteuse.SetActive(false);
 				m_Couteau.SetActive(false);
+				m_Boobs.SetActive(false);
 				break;
 			}
 		}
