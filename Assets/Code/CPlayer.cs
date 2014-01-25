@@ -15,10 +15,12 @@ public class CPlayer : MonoBehaviour
 	float m_fVelocityWalk = 15.0f;
 	float m_fVelocityRun;
 	float m_fVelocityRotation = 0.2f;
-	float m_fVelocityJump = 250.0f;
+	float m_fVelocityJump = 8.0f;
 	float m_fAngleY;
 	float m_fTimerJump;
 	float m_fTimerJumpMax = 1.0f;
+
+	Vector3 vMoveDirection = Vector3.zero;
 
 	bool m_bCanSneak; //s'accroupir
 	bool m_bJump;
@@ -93,42 +95,19 @@ public class CPlayer : MonoBehaviour
 		float fAngleX = gameObject.transform.rotation.eulerAngles.y * 2*3.14f/360.0f;
 		Vector3 vForward = new Vector3(Mathf.Sin(fAngleX),0, Mathf.Cos(fAngleX));
 		Vector3 vRight = new Vector3(Mathf.Sin(fAngleX + 3.14f/2.0f),0, Mathf.Cos(fAngleX + 3.14f/2.0f));
-		Vector3 vVelocity = gameObject.rigidbody.velocity;
-		//Vector3 vVelocity = Vector3.zero;
-
-		if(CApoilInput.InputPlayer.MoveForward)
-		{
-			vVelocity = m_fVelocityRun*m_fVelocityWalk*vForward;
+		
+		CharacterController controller = GetComponent<CharacterController>();
+		if (controller.isGrounded) {
+			vMoveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+			vMoveDirection = transform.TransformDirection(vMoveDirection);
+			vMoveDirection *= m_fVelocityWalk;
+			if (CApoilInput.InputPlayer.Jump && m_bCanRun)
+				vMoveDirection.y = m_fVelocityJump;
+			
 		}
-		if(CApoilInput.InputPlayer.MoveBackward)
-		{
-			vVelocity = -m_fVelocityRun*m_fVelocityWalk*vForward;
-		}
-		if(CApoilInput.InputPlayer.MoveLeft)
-		{
-			vVelocity = -m_fVelocityRun*m_fVelocityWalk*vRight;
-		}
-		if(CApoilInput.InputPlayer.MoveRight)
-		{
-			vVelocity = m_fVelocityRun*m_fVelocityWalk*vRight;
-		}
-		if(!CApoilInput.InputPlayer.MoveForward && !CApoilInput.InputPlayer.MoveBackward && !CApoilInput.InputPlayer.MoveLeft && !CApoilInput.InputPlayer.MoveRight)
-		{
-			Vector3 vel = gameObject.rigidbody.velocity;
-			vel.x *= 0.85f;
-			vel.z *= 0.85f;
-			gameObject.rigidbody.velocity = vel;
-		}
+		vMoveDirection.y -= 20 * Time.deltaTime;
+		controller.Move(vMoveDirection * Time.deltaTime);
 
-		//gameObject.rigidbody.velocity = vVelocity;
-		gameObject.rigidbody.AddForce(vVelocity);
-
-		if(gameObject.rigidbody.velocity.magnitude > m_fVelocityWalk * m_fVelocityRun)
-			gameObject.rigidbody.velocity *= m_fVelocityWalk * m_fVelocityRun/gameObject.rigidbody.velocity.magnitude;
-
-
-
-		Debug.Log (gameObject.rigidbody.velocity.magnitude);
 
 		gameObject.transform.RotateAround(new Vector3(0,1,0),m_fVelocityRotation * CApoilInput.InputPlayer.MouseAngleX);
 	}
@@ -184,13 +163,13 @@ public class CPlayer : MonoBehaviour
 		//DEBUG
 		if(CApoilInput.DebugF9)
 			Die ();
-
+/*
 		if(CApoilInput.InputPlayer.Jump && m_fTimerJump < 0.0f && m_bCanRun)
 		{
 			gameObject.rigidbody.AddForce(m_fVelocityJump*vUp);
 			m_fTimerJump = m_fTimerJumpMax;
 		}
-
+*/
 		if(CApoilInput.InputPlayer.Sneak && m_bCanSneak)
 		{
 
