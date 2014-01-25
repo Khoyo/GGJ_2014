@@ -33,7 +33,7 @@ GameObject:
   - 124: {fileID: 12400000}
   - 81: {fileID: 8100000}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: MainCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -328,6 +328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TexturCrossHair: {fileID: 2800000, guid: a510c5882680a044eb0bbc094ae02360, type: 3}
+  m_Impact: {fileID: 100000, guid: df4e2c096701f6746b3628da2a2127d4, type: 2}
 --- !u!124 &12400000
 Behaviour:
   m_ObjectHideFlags: 1
