@@ -14,8 +14,8 @@ GameObject:
   m_Name: Support
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &100002
 GameObject:
@@ -31,8 +31,8 @@ GameObject:
   m_Name: Porte_Gauche
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &100004
 GameObject:
@@ -48,8 +48,8 @@ GameObject:
   m_Name: Porte_Droite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &100006
 GameObject:
@@ -107,8 +107,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100006}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.61308098, y: 2.07541776, z: 12.1787224}
-  m_LocalScale: {x: 13.2169514, y: 13.2169514, z: 13.2169514}
+  m_LocalPosition: {x: -33.3901749, y: .666678905, z: 31.8225956}
+  m_LocalScale: {x: 13.2169514, y: 15.5161619, z: 13.2169514}
   m_Children:
   - {fileID: 400004}
   - {fileID: 400002}
