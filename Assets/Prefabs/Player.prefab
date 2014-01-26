@@ -213,7 +213,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.38315248, y: 2.1138413, z: -7.10118866}
+  m_LocalPosition: {x: -36.6798477, y: 1.81146359, z: 38.7559052}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400004}
@@ -453,7 +453,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 3d48809e1c9db5e4d98dadaf19f29eed, type: 2}
+  - {fileID: 2100000, guid: cb25a2ec83a94ee4f9ce113ed010bda1, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -649,8 +649,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TexturCrossHair: {fileID: 2800000, guid: a510c5882680a044eb0bbc094ae02360, type: 3}
-  m_TextureBlack_up: {fileID: 2800000, guid: f867af3941a5c824c96b6482a867d682, type: 3}
-  m_TextureBlack_down: {fileID: 2800000, guid: cf231adbb01a5e443a15878e66e2aaf2, type: 3}
+  m_TextureBlack: {fileID: 2800000, guid: 7edb3984481f14947af98798482f662d, type: 3}
   m_Impact: {fileID: 100000, guid: df4e2c096701f6746b3628da2a2127d4, type: 2}
   m_Batteuse: {fileID: 100012}
   m_Couteau: {fileID: 100006}
