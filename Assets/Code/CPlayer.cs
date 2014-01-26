@@ -57,7 +57,7 @@ public class CPlayer : MonoBehaviour
 		m_fVelocityRun = 1.0f;
 		m_fTimerGateling = 0.0f;
 		m_fTimerSwitch = 0.0f;
-		m_eState = EState.e_MauvaisGout;
+		m_eState = EState.e_Furtif;
 		m_eStateToGo = m_eState;
 		m_bCanSneak = false;
 		m_bJump = false;
@@ -73,6 +73,7 @@ public class CPlayer : MonoBehaviour
 		m_bIsOnLadder = false;
 		m_nNbFrameGatling = 0;
 		gameObject.transform.FindChild("Head").FindChild("light").gameObject.SetActive(false);
+		StopPisse();
 	}
 	
 	// Update is called once per frame
@@ -235,36 +236,27 @@ public class CPlayer : MonoBehaviour
 	void InputsPlayer()
 	{
 		Vector3 vUp = new Vector3(0,1,0);
-		
-		if(CApoilInput.InputPlayer.SwitchFurtif)
+
+		if(!CGame.m_bLevelFixeSansSwitch)
 		{
-			m_eStateToGo = EState.e_Furtif;
-			m_fTimerSwitch = m_fTimerSwitchMax;
-			m_bIsInSwitch = true;
-			CSoundEngine.postEvent("Play_Switch", gameObject);
-		}
-		if(CApoilInput.InputPlayer.SwitchBourin)
-		{
-			m_eStateToGo = EState.e_Bourin;
-			m_fTimerSwitch = m_fTimerSwitchMax;
-			m_bIsInSwitch = true;
-			CSoundEngine.postEvent("Play_Switch", gameObject);
-		}
-		if(CApoilInput.InputPlayer.SwitchCharismatique)
-		{
-			m_eStateToGo = EState.e_Charismatique;
-			m_fTimerSwitch = m_fTimerSwitchMax;
-			m_bIsInSwitch = true;
-			CSoundEngine.postEvent("Play_Switch", gameObject);
-		}
-		
-		//DEBUG
-		if(CApoilInput.DebugNum4)
-		{
-			m_eStateToGo = EState.e_MauvaisGout;
-			m_fTimerSwitch = m_fTimerSwitchMax;
-			m_bIsInSwitch = true;
-			CSoundEngine.postEvent("Play_Switch", gameObject);
+			if(CApoilInput.InputPlayer.SwitchFurtif)
+			{
+				GoToStateFurtif();
+			}
+			if(CApoilInput.InputPlayer.SwitchBourin)
+			{
+				GoToStateBourin();
+			}
+			if(CApoilInput.InputPlayer.SwitchCharismatique)
+			{
+				GoToStateCharismatique();
+			}
+			
+			//DEBUG
+			if(CApoilInput.DebugNum4)
+			{
+				GoToStateMauvaisGout();
+			}
 		}
 
 		//DEBUG
@@ -289,6 +281,38 @@ public class CPlayer : MonoBehaviour
 		else
 			m_fVelocityRun = 1.0f;
 
+	}
+
+	public void GoToStateFurtif()
+	{
+		m_eStateToGo = EState.e_Furtif;
+		m_fTimerSwitch = m_fTimerSwitchMax;
+		m_bIsInSwitch = true;
+		CSoundEngine.postEvent("Play_Switch", gameObject);
+	}
+
+	public void GoToStateBourin()
+	{
+		m_eStateToGo = EState.e_Bourin;
+		m_fTimerSwitch = m_fTimerSwitchMax;
+		m_bIsInSwitch = true;
+		CSoundEngine.postEvent("Play_Switch", gameObject);
+	}
+
+	public void GoToStateCharismatique()
+	{
+		m_eStateToGo = EState.e_Charismatique;
+		m_fTimerSwitch = m_fTimerSwitchMax;
+		m_bIsInSwitch = true;
+		CSoundEngine.postEvent("Play_Switch", gameObject);
+	}
+
+	public void GoToStateMauvaisGout()
+	{
+		m_eStateToGo = EState.e_MauvaisGout;
+		m_fTimerSwitch = m_fTimerSwitchMax;
+		m_bIsInSwitch = true;
+		CSoundEngine.postEvent("Play_Switch", gameObject);
 	}
 
 	void FireGatling()
@@ -397,7 +421,8 @@ public class CPlayer : MonoBehaviour
 		}
 	}
 
-	public EState getState(){
+	public EState getState()
+	{
 		return m_eState;
 	}
 
