@@ -1,8 +1,10 @@
 Event	ID	Name			Wwise Object Path	Notes
 	81759402	Play_Switch			\Default Work Unit\Play_Switch	
 	434087672	Play_GunFire			\Default Work Unit\Play_GunFire	
+	1302282156	Stop_Pisse			\Default Work Unit\Stop_Pisse	
 	1315091481	Play_GunTouch			\Default Work Unit\Play_GunTouch	
 	1583215645	Play_WilhelmScream			\Default Work Unit\Play_WilhelmScream	
+	1700937786	Play_Pisse			\Default Work Unit\Play_Pisse	
 	1909708863	Play_DiePlayer			\Default Work Unit\Play_DiePlayer	
 	2830233258	Play_CutMiss			\Default Work Unit\Play_CutMiss	
 	3832649301	Play_CutHit			\Default Work Unit\Play_CutHit	
@@ -17,4 +19,5 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	706985106	DIePlayer	C:\Users\tim-asus\Desktop\Wwise_GGJ2014\GGJ_2014\.cache\Windows\sfx\dieplayer_ddc98ef4.wem		\Actor-Mixer Hierarchy\Default Work Unit\DIePlayer		105792
 	716577370	Cut_Miss	C:\Users\tim-asus\Desktop\Wwise_GGJ2014\GGJ_2014\.cache\Windows\sfx\cut_miss_ddc98ef4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Cut_Miss		192968
 	915730690	Switch	C:\Users\tim-asus\Desktop\Wwise_GGJ2014\GGJ_2014\.cache\Windows\sfx\switch_ddc98ef4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Switch		688804
+	1008380100	pisse	C:\Users\tim-asus\Desktop\Wwise_GGJ2014\GGJ_2014\.cache\Windows\sfx\pisse_f8e74a04.wem		\Actor-Mixer Hierarchy\Default Work Unit\pisse		5180644
 
