@@ -1,4 +1,4 @@
-GGJ_2014 by "Team Tesdansmatim"
+"Psychiatric Super Joy" by "Team Tesdansmatim"
 ========
 
 Description
