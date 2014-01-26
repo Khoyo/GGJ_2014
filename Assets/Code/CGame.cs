@@ -9,11 +9,14 @@ public class CGame : MonoBehaviour
 	public static bool m_bDebug;
 	public static int m_fWidth = 1280;
 	public static int m_fHeight = 720;
+	public bool LD_LevelFixeSansSwitch;
+	public static bool m_bLevelFixeSansSwitch;
 	// Use this for initialization
 	void Start () 
 	{
 		CApoilInput.Init();
 		m_bDebug = LD_bDebug;
+		m_bLevelFixeSansSwitch = LD_LevelFixeSansSwitch;
 		CSoundEngine.Init();
 		CSoundEngine.LoadBank(soundbankName);
 	}
