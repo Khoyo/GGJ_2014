@@ -692,6 +692,7 @@ MonoBehaviour:
   m_Batteuse: {fileID: 100012}
   m_Couteau: {fileID: 100006}
   m_Boobs: {fileID: 100020}
+  m_Pisse: {fileID: 100024}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
