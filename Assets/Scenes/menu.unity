@@ -101,8 +101,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3e2f2300267b7d4ca41f140f3122eed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Texture_Fond: {fileID: 0}
-  m_Texture_Splash: {fileID: 0}
+  m_Texture_Fond: {fileID: 2800000, guid: 4e4b47aee2d64b5458f2e2e15570ae08, type: 3}
+  m_Texture_Splash: {fileID: 2800000, guid: 018c9cd2f831ec94abfc5ca8ee9af8d2, type: 3}
 --- !u!4 &959952083
 Transform:
   m_ObjectHideFlags: 0
