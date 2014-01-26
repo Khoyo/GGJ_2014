@@ -237,6 +237,7 @@ public class CPlayer : MonoBehaviour
 
 	public void Die()
 	{
+		StopPisse();
 		CSoundEngine.postEvent("Play_DiePlayer", gameObject);
 		Application.LoadLevel(Application.loadedLevel);
 	}

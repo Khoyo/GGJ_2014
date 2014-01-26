@@ -15,7 +15,7 @@ public class CGame : MonoBehaviour
 	void Start () 
 	{
 		CApoilInput.Init();
-		m_bDebug = LD_bDebug;
+		m_bDebug = false;
 		m_bLevelFixeSansSwitch = LD_LevelFixeSansSwitch;
 		CSoundEngine.Init();
 		CSoundEngine.LoadBank(soundbankName);
