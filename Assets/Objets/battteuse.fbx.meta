@@ -4,9 +4,17 @@ ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Batteuse
+    100004: Camera
+    100006: Lamp
     400000: //RootNode
+    400002: Batteuse
+    400004: Camera
+    400006: Lamp
     2300000: //RootNode
+    2300002: Batteuse
     3300000: //RootNode
+    3300002: Batteuse
     4300000: Batteuse
     7400000: Default Take
     9500000: //RootNode
