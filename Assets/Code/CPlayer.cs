@@ -46,7 +46,7 @@ public class CPlayer : MonoBehaviour
 	bool m_bSoundCutIsPlayed;
 	int m_nNbFrameGatling;
 
-	public GameObject m_Batteuse, m_Couteau, m_Boobs;
+	public GameObject m_Batteuse, m_Couteau, m_Boobs, m_Pisse;
 
 	// Use this for initialization
 	void Start () 
@@ -56,7 +56,7 @@ public class CPlayer : MonoBehaviour
 		m_fVelocityRun = 1.0f;
 		m_fTimerGateling = 0.0f;
 		m_fTimerSwitch = 0.0f;
-		m_eState = EState.e_Charismatique;
+		m_eState = EState.e_MauvaisGout;
 		m_eStateToGo = m_eState;
 		m_bCanSneak = false;
 		m_bJump = false;
@@ -118,6 +118,15 @@ public class CPlayer : MonoBehaviour
 				}
 				case EState.e_MauvaisGout:
 				{
+					gameObject.transform.FindChild("Head").Rotate(Vector3.forward, Mathf.Cos (Time.time)/2.0f);
+					if(CApoilInput.InputPlayer.Fire)
+					{
+						FirePisse();
+					}
+					else
+					{
+						StopPisse();
+					}
 					break;
 				}
 			}
@@ -347,6 +356,18 @@ public class CPlayer : MonoBehaviour
 			}
 		}
 
+	}
+
+	void FirePisse()
+	{
+		//m_Pisse.SetActive(true);
+		m_Pisse.GetComponent<ParticleSystem>().enableEmission = true;
+	}
+
+	void StopPisse()
+	{
+		//m_Pisse.SetActive(false);
+		m_Pisse.GetComponent<ParticleSystem>().enableEmission = false;
 	}
 
 	void EntreDeuxChangement()
