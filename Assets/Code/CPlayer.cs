@@ -8,7 +8,7 @@ public class CPlayer : MonoBehaviour
 	public Texture m_TextureBlack_down;
 	public GameObject m_Impact;
 
-	enum EState
+	public enum EState
 	{
 		e_Furtif,
 		e_Bourin,
@@ -327,6 +327,10 @@ public class CPlayer : MonoBehaviour
 			m_bIsInSwitch = false;
 			SwitchState();
 		}
+	}
+
+	public EState getState(){
+		return m_eState;
 	}
 
 	void SwitchState()
