@@ -58,6 +58,7 @@ public class CPlayer : MonoBehaviour
 		m_fTimerGateling = 0.0f;
 		m_fTimerSwitch = 0.0f;
 		m_eState = EState.e_Furtif;
+
 		m_eStateToGo = m_eState;
 		m_bCanSneak = false;
 		m_bJump = false;
