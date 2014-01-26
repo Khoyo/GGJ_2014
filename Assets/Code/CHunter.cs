@@ -16,7 +16,7 @@ public class CHunter : MonoBehaviour {
 
 			RaycastHit hit;
 			Vector3 lineOfSight = player.transform.position-transform.position;
-			Physics.Raycast(new Ray(transform.position, transform.TransformDirection(new Vector3(0, 0, 1))), out hit, lineOfSight.magnitude, ~(1<<8));
+			Physics.Raycast(new Ray(transform.position, transform.TransformDirection(new Vector3(0, 0, 1))), out hit, lineOfSight.magnitude, ~((1<<8)|(1<<9)));
 			if(hit.collider != null && hit.collider.name == "Player")
 				hit.collider.GetComponent<CPlayer>().Die();
 

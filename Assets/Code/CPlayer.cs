@@ -320,7 +320,7 @@ public class CPlayer : MonoBehaviour
 	{
 		RaycastHit hit;
 		GameObject cam = gameObject.transform.FindChild("Head").FindChild("MainCamera").gameObject;
-		Physics.Raycast(cam.transform.position, cam.transform.forward,out hit);
+		Physics.Raycast(cam.transform.position, cam.transform.forward,out hit, 100000, ~(1<<9));
 
 		if(m_fTimerGateling >= 0.0f)
 			m_fTimerGateling -= Time.deltaTime;
@@ -334,6 +334,8 @@ public class CPlayer : MonoBehaviour
 				m_nNbFrameGatling = 0;
 			}
 			m_fTimerGateling = m_fCadenceGateling;
+			if(hit.collider != null)
+				Debug.Log ("blocked by "+hit.collider.name);
 			if (hit.collider != null && hit.collider.CompareTag("Ennemies"))
 			{
 				//print ("Blocked by " + hit.collider.name);

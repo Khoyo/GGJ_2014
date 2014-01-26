@@ -38,7 +38,7 @@ public class CMedecin : MonoBehaviour {
 
 			Vector3 lineOfSight = ass.transform.position-transform.position;
 			RaycastHit hit;
-			Physics.Raycast(new Ray(transform.position, lineOfSight), out hit, lineOfSight.magnitude, ~(1<<8));
+			Physics.Raycast(new Ray(transform.position, lineOfSight), out hit, lineOfSight.magnitude, ~((1<<8)|(1<<9)));
 			if (hit.collider != null && hit.collider.gameObject != ass){
 				continue;
 			}

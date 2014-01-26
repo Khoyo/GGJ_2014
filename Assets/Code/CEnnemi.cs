@@ -18,7 +18,7 @@ public class CEnnemi : MonoBehaviour {
 		GameObject player = GameObject.Find("Player");
 		Vector3 lineOfSight = player.transform.position-transform.position;
 		RaycastHit hit;
-		Physics.Raycast(new Ray(transform.position, lineOfSight), out hit, lineOfSight.magnitude, ~(1<<8));
+		Physics.Raycast(new Ray(transform.position, lineOfSight), out hit, lineOfSight.magnitude, ~((1<<8)|(1<<9)));
 		if (hit.collider != null && hit.collider.name != "Player") {
 			/*if(hit.collider)
 				print ("Blocked by " + hit.collider.name);*/
