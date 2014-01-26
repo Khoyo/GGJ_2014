@@ -5,6 +5,8 @@ public class CMedecin : MonoBehaviour {
 
 	List<GameObject> m_Assistants;
 
+	bool AlertedThisFrame;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -12,6 +14,7 @@ public class CMedecin : MonoBehaviour {
 
 	void FixedUpdate(){
 		m_Assistants = new List<GameObject>();
+		AlertedThisFrame = false;
 	}
 
 	// Update is called once per frame
@@ -20,11 +23,16 @@ public class CMedecin : MonoBehaviour {
 		if(GetComponent<CEnnemi>().m_bHaveLineOfSight && player.GetComponent<CPlayer>().getState() != CPlayer.EState.e_Charismatique)
 			Alert(player);
 
-		/*foreach(GameObject ass in m_Assistants)
-			Debug.DrawRay(transform.position, ass.transform.position-transform.position, Color.yellow);*/
+		foreach(GameObject ass in m_Assistants)
+			Debug.DrawRay(transform.position, ass.transform.position-transform.position, Color.yellow);
 	}
 
 	public void Alert(GameObject player){
+		if(AlertedThisFrame)
+			return;
+
+		AlertedThisFrame = true;
+
 		GetComponent<NavMeshAgent>().SetDestination(player.transform.position);
 		foreach(GameObject ass in m_Assistants){
 
