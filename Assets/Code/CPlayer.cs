@@ -1,4 +1,4 @@
-﻿﻿using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class CPlayer : MonoBehaviour 
@@ -28,11 +28,11 @@ public class CPlayer : MonoBehaviour
 	float m_fTimerGateling;
 	float m_fCadenceGateling = 1/10.0f;
 	float m_fTimerCut;
-	float m_fCadenceCut = 1.0f;
+	float m_fCadenceCut = 1/2.0f;
 	float m_fCoeffVelocityGateling;
 	float m_fRadiusCut = 2.0f;
 	float m_fTimerSwitch;
-	float m_fTimerSwitchMax = 2.0f;
+	float m_fTimerSwitchMax = 3.0f;
 
 	Vector3 vMoveDirection = Vector3.zero;
 
@@ -43,6 +43,7 @@ public class CPlayer : MonoBehaviour
 	bool m_bIsInSwitch;
 	bool m_bSneak;
 	bool m_bIsOnLadder;
+	bool m_bSoundCutIsPlayed;
 	int m_nNbFrameGatling;
 
 	public GameObject m_Batteuse, m_Couteau, m_Boobs;
@@ -62,6 +63,7 @@ public class CPlayer : MonoBehaviour
 		m_bCanRun = false;
 		m_SwitchState = false;
 		m_bIsInSwitch = false;
+		m_bSoundCutIsPlayed = false;
 		SwitchState();
 		m_fCoeffVelocityGateling = 0.0f;
 
@@ -84,6 +86,41 @@ public class CPlayer : MonoBehaviour
 			}
 			MoveHead();
 			InputsPlayer();
+
+			switch(m_eState)
+			{
+				case EState.e_Furtif:
+				{
+					if(CApoilInput.InputPlayer.Fire)
+					{
+						FireCut();
+					}
+					break;
+				}
+				case EState.e_Bourin:
+				{
+					if(CApoilInput.InputPlayer.Fire)
+					{
+						FireGatling();
+					}
+					else
+					{
+						m_nNbFrameGatling = 0;
+						gameObject.transform.FindChild("Head").FindChild("light").gameObject.SetActive(false);
+					}
+					m_Batteuse.transform.Rotate(Vector3.forward,m_fCoeffVelocityGateling*600* Time.deltaTime);
+					
+					break;
+				}
+				case EState.e_Charismatique:
+				{
+					break;
+				}
+				case EState.e_MauvaisGout:
+				{
+					break;
+				}
+			}
 		}
 
 		if(m_bIsInSwitch)
@@ -91,40 +128,6 @@ public class CPlayer : MonoBehaviour
 			EntreDeuxChangement();
 		}
 
-		switch(m_eState)
-		{
-			case EState.e_Furtif:
-			{
-				if(CApoilInput.InputPlayer.Fire)
-				{
-					FireCut();
-				}
-				break;
-			}
-			case EState.e_Bourin:
-			{
-				if(CApoilInput.InputPlayer.Fire)
-				{
-					FireGatling();
-				}
-				else
-				{
-					m_nNbFrameGatling = 0;
-					gameObject.transform.FindChild("Head").FindChild("light").gameObject.SetActive(false);
-				}
-				m_Batteuse.transform.Rotate(Vector3.forward,m_fCoeffVelocityGateling*600* Time.deltaTime);
-
-				break;
-			}
-			case EState.e_Charismatique:
-			{
-				break;
-			}
-			case EState.e_MauvaisGout:
-			{
-				break;
-			}
-		}
 
 		if(m_fTimerJump >= 0.0f)
 			m_fTimerJump -= Time.deltaTime;
@@ -169,7 +172,6 @@ public class CPlayer : MonoBehaviour
 
 		//vMoveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 		vMoveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-		Debug.Log (vMoveDirection);
 		vMoveDirection = transform.TransformDirection(vMoveDirection);
 		vMoveDirection *= m_fVelocityWalk * m_fVelocityRun;
 
@@ -187,7 +189,6 @@ public class CPlayer : MonoBehaviour
 			
 		}
 		controller.Move(vMoveDirection * Time.deltaTime);
-
 
 		gameObject.transform.RotateAround(new Vector3(0,1,0),m_fVelocityRotation * CApoilInput.InputPlayer.MouseAngleX);
 	}
@@ -216,6 +217,7 @@ public class CPlayer : MonoBehaviour
 
 	void Die()
 	{
+		CSoundEngine.postEvent("Play_DiePlayer", gameObject);
 		Application.LoadLevel(Application.loadedLevel);
 	}
 
@@ -228,18 +230,21 @@ public class CPlayer : MonoBehaviour
 			m_eStateToGo = EState.e_Furtif;
 			m_fTimerSwitch = m_fTimerSwitchMax;
 			m_bIsInSwitch = true;
+			CSoundEngine.postEvent("Play_Switch", gameObject);
 		}
 		if(CApoilInput.InputPlayer.SwitchBourin)
 		{
 			m_eStateToGo = EState.e_Bourin;
 			m_fTimerSwitch = m_fTimerSwitchMax;
 			m_bIsInSwitch = true;
+			CSoundEngine.postEvent("Play_Switch", gameObject);
 		}
 		if(CApoilInput.InputPlayer.SwitchCharismatique)
 		{
 			m_eStateToGo = EState.e_Charismatique;
 			m_fTimerSwitch = m_fTimerSwitchMax;
 			m_bIsInSwitch = true;
+			CSoundEngine.postEvent("Play_Switch", gameObject);
 		}
 		
 		//DEBUG
@@ -248,6 +253,7 @@ public class CPlayer : MonoBehaviour
 			m_eStateToGo = EState.e_MauvaisGout;
 			m_fTimerSwitch = m_fTimerSwitchMax;
 			m_bIsInSwitch = true;
+			CSoundEngine.postEvent("Play_Switch", gameObject);
 		}
 
 		//DEBUG
@@ -316,18 +322,31 @@ public class CPlayer : MonoBehaviour
 		
 		if(m_fTimerCut >= 0.0f)
 			m_fTimerCut -= Time.deltaTime;
-		
-		if (hit.collider != null && hit.collider.CompareTag("Ennemies") && m_fTimerCut < 0.0f)
+		if(m_fTimerCut < 0.0f)
 		{
-			//print ("Blocked by " + hit.collider.name);
-			//Object.Destroy(collider.gameObject);
-			m_fTimerCut = m_fCadenceCut;
-			hit.collider.gameObject.GetComponent<CEnnemi>().TakeCut();
-			//GameObject newImpact;
-			//newImpact = (Instantiate(m_Impact, hit.collider.gameObject. transform.position, Quaternion.identity) as GameObject);
-			//newImpact.transform.parent = hit.collider.gameObject.transform;
-			
+			//faire le mvt
+			m_bSoundCutIsPlayed = false;
+
+			if (hit.collider != null && hit.collider.CompareTag("Ennemies"))
+			{
+				//print ("Blocked by " + hit.collider.name);
+				//Object.Destroy(collider.gameObject);
+				CSoundEngine.postEvent("Play_CutHit", gameObject);
+				hit.collider.gameObject.GetComponent<CEnnemi>().TakeCut();
+				m_fTimerCut = m_fCadenceCut;
+				//GameObject newImpact;
+				//newImpact = (Instantiate(m_Impact, hit.collider.gameObject. transform.position, Quaternion.identity) as GameObject);
+				//newImpact.transform.parent = hit.collider.gameObject.transform;
+				
+			}
+			else if(!m_bSoundCutIsPlayed)
+			{
+				CSoundEngine.postEvent("Play_CutMiss", gameObject);
+				m_bSoundCutIsPlayed = true;
+				m_fTimerCut = m_fCadenceCut;
+			}
 		}
+
 	}
 
 	void EntreDeuxChangement()

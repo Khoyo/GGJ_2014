@@ -24,24 +24,49 @@
 			<ShortName>SoundBank_GGJ2014</ShortName>
 			<Path>SoundBank_GGJ2014.bnk</Path>
 			<IncludedEvents>
+				<Event Id="4095338991" Name="Play_BreathEnd" />
+				<Event Id="3832649301" Name="Play_CutHit" />
+				<Event Id="2830233258" Name="Play_CutMiss" />
+				<Event Id="1909708863" Name="Play_DiePlayer" />
 				<Event Id="434087672" Name="Play_GunFire" />
 				<Event Id="1315091481" Name="Play_GunTouch" />
+				<Event Id="81759402" Name="Play_Switch" />
 				<Event Id="1583215645" Name="Play_WilhelmScream" />
 			</IncludedEvents>
 			<IncludedDialogueEvents />
 			<ReferencedStreamedFiles />
 			<IncludedFullFiles>
+				<File Id="324302801" Language="SFX">
+					<ShortName>Cut_Hit.wav</ShortName>
+					<Path>sfx\cut_hit_ddc98ef4.wem</Path>
+				</File>
+				<File Id="716577370" Language="SFX">
+					<ShortName>Cut_Miss.wav</ShortName>
+					<Path>sfx\cut_miss_ddc98ef4.wem</Path>
+				</File>
 				<File Id="383290482" Language="SFX">
 					<ShortName>Die_ennemies.wav</ShortName>
 					<Path>sfx\die_ennemies_ddc98ef4.wem</Path>
 				</File>
-				<File Id="627825812" Language="SFX">
+				<File Id="706985106" Language="SFX">
+					<ShortName>DIePlayer.wav</ShortName>
+					<Path>sfx\dieplayer_ddc98ef4.wem</Path>
+				</File>
+				<File Id="142306988" Language="SFX">
+					<ShortName>EndLevel.wav</ShortName>
+					<Path>sfx\endlevel_ddc98ef4.wem</Path>
+				</File>
+				<File Id="656950511" Language="SFX">
 					<ShortName>Gun_Fire.wav</ShortName>
 					<Path>sfx\gun_fire_ddc98ef4.wem</Path>
 				</File>
 				<File Id="181213917" Language="SFX">
 					<ShortName>Gun_Touch.wav</ShortName>
 					<Path>sfx\gun_touch_ddc98ef4.wem</Path>
+				</File>
+				<File Id="915730690" Language="SFX">
+					<ShortName>Switch.wav</ShortName>
+					<Path>sfx\switch_ddc98ef4.wem</Path>
 				</File>
 			</IncludedFullFiles>
 			<IncludedPrefetchFiles />

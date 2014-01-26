@@ -25,5 +25,17 @@ public class CGame : MonoBehaviour
 
 		if(CApoilInput.Quit)
 			Application.Quit();
+
+		if(CApoilInput.DebugF10)
+			GoToNextLevel();
+	}
+
+	public void GoToNextLevel()
+	{
+		if(Application.loadedLevel < Application.levelCount)
+		{
+			CSoundEngine.postEvent("Play_BreathEnd", gameObject);
+			Application.LoadLevel(Application.loadedLevel+1);
+		}
 	}
 }
