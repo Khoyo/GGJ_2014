@@ -127,7 +127,7 @@ GameObject:
   - 4: {fileID: 400014}
   - 65: {fileID: 6500010}
   - 114: {fileID: 11400000}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PorteTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100006}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.46842766, y: .648488164, z: 12.5857172}
+  m_LocalPosition: {x: 1.04715681, y: .648488164, z: 17.375948}
   m_LocalScale: {x: 88.3514175, y: 88.3514175, z: 88.3514175}
   m_Children:
   - {fileID: 400004}
