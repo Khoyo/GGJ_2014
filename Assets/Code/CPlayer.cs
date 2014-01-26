@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class CPlayer : MonoBehaviour 
@@ -42,6 +42,7 @@ public class CPlayer : MonoBehaviour
 	bool m_SwitchState;
 	bool m_bIsInSwitch;
 	bool m_bSneak;
+	bool m_bIsOnLadder;
 	int m_nNbFrameGatling;
 
 	public GameObject m_Batteuse, m_Couteau, m_Boobs;
@@ -65,6 +66,7 @@ public class CPlayer : MonoBehaviour
 		m_fCoeffVelocityGateling = 0.0f;
 
 		m_bSneak = false;
+		m_bIsOnLadder = false;
 		m_nNbFrameGatling = 0;
 		gameObject.transform.FindChild("Head").FindChild("light").gameObject.SetActive(false);
 	}
@@ -74,7 +76,12 @@ public class CPlayer : MonoBehaviour
 	{
 		if(!m_bIsInSwitch)
 		{
-			Move();
+			if(!m_bIsOnLadder)
+				Move();
+			else
+			{
+				MoveOnLadder();
+			}
 			MoveHead();
 			InputsPlayer();
 		}
@@ -153,14 +160,16 @@ public class CPlayer : MonoBehaviour
 	void Move()
 	{
 		float fAngleX = gameObject.transform.rotation.eulerAngles.y * 2*3.14f/360.0f;
-		Vector3 vForward = new Vector3(Mathf.Sin(fAngleX),0, Mathf.Cos(fAngleX));
+		/*Vector3 vForward = new Vector3(Mathf.Sin(fAngleX),0, Mathf.Cos(fAngleX));
 		Vector3 vRight = new Vector3(Mathf.Sin(fAngleX + 3.14f/2.0f),0, Mathf.Cos(fAngleX + 3.14f/2.0f));
-		
+		*/
 		CharacterController controller = GetComponent<CharacterController>();
 
 		float vspeed = vMoveDirection.y;
 
+		//vMoveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 		vMoveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+		Debug.Log (vMoveDirection);
 		vMoveDirection = transform.TransformDirection(vMoveDirection);
 		vMoveDirection *= m_fVelocityWalk * m_fVelocityRun;
 
@@ -169,7 +178,8 @@ public class CPlayer : MonoBehaviour
 
 		vMoveDirection.y -= 20 * Time.deltaTime;
 
-		if (controller.isGrounded) {
+		if (controller.isGrounded) 
+		{
 			if (CApoilInput.InputPlayer.Jump && m_bCanRun)
 				vMoveDirection.y = m_fVelocityJump;
 			else
@@ -198,7 +208,13 @@ public class CPlayer : MonoBehaviour
 		gameObject.transform.FindChild("Head").RotateAroundLocal(new Vector3(1,0,0), m_fVelocityRotation * (m_fAngleY - fAngleBeforeY));
 	}
 
+	void MoveOnLadder()
 	public void Die()
+	{
+		Vector3 vDirection = new Vector3(0, CApoilInput.InputPlayer.MoveForward ? 1.0f : 0.0f, 0);
+		gameObject.transform.Translate(vDirection/5);
+	}
+
 	{
 		Application.LoadLevel(Application.loadedLevel);
 	}
@@ -380,6 +396,22 @@ public class CPlayer : MonoBehaviour
 				m_Boobs.SetActive(false);
 				break;
 			}
+		}
+	}
+
+	void OnTriggerStay(Collider other)
+	{
+		if(other.CompareTag("Echelle"))
+		{
+			m_bIsOnLadder = true;
+		}
+	}
+
+	void OnTriggerExit(Collider other)
+	{
+		if(other.CompareTag("Echelle"))
+		{
+			m_bIsOnLadder = false;
 		}
 	}
 }
