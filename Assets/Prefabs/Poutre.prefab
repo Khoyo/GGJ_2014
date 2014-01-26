@@ -11,6 +11,7 @@ GameObject:
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
   - 95: {fileID: 9500000}
+  - 65: {fileID: 6500000}
   m_Layer: 0
   m_Name: Poutre
   m_TagString: Untagged
@@ -24,8 +25,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_LocalRotation: {x: .499999851, y: .500000298, z: -.500000119, w: -.499999702}
-  m_LocalPosition: {x: 9.26642132, y: 2.9518671, z: 8.95757961}
+  m_LocalRotation: {x: .5, y: .5, z: .5, w: .5}
+  m_LocalPosition: {x: -2.00191116, y: 8.06242847, z: -8.65295219}
   m_LocalScale: {x: 8.81546307, y: 8.81546307, z: 352.61853}
   m_Children: []
   m_Father: {fileID: 0}
@@ -57,6 +58,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Mesh: {fileID: 4300000, guid: 18737634058030b47964845e4a8b8519, type: 3}
+--- !u!65 &6500000
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .0560165122, y: .0285583194, z: .0204326008}
+  m_Center: {x: .0180081464, y: 0, z: 0}
 --- !u!95 &9500000
 Animator:
   serializedVersion: 2
