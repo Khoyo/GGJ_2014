@@ -5,7 +5,7 @@ public class CEnnemi : MonoBehaviour {
 
 	public bool m_bHaveLineOfSight;
 	public int m_nLife = 10;
-	const bool m_DebugRay = true;
+	const bool m_DebugRay = false;
 
 	// Use this for initialization
 	void Start () {
@@ -20,8 +20,8 @@ public class CEnnemi : MonoBehaviour {
 		RaycastHit hit;
 		Physics.Raycast(new Ray(transform.position, lineOfSight), out hit, lineOfSight.magnitude, ~(1<<8));
 		if (hit.collider != null && hit.collider.name != "Player") {
-			if(hit.collider)
-				print ("Blocked by " + hit.collider.name);
+			/*if(hit.collider)
+				print ("Blocked by " + hit.collider.name);*/
 			m_bHaveLineOfSight = false;
 		}
 		else 
