@@ -480,6 +480,8 @@ public class CPlayer : MonoBehaviour
 		{
 			m_bIsOnLadder = true;
 		}
+		if(other.name == "Killzone")
+			Die();
 	}
 
 	void OnTriggerExit(Collider other)
