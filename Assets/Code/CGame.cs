@@ -30,11 +30,11 @@ public class CGame : MonoBehaviour
 			GoToNextLevel();
 	}
 
-	public void GoToNextLevel()
+	public static void GoToNextLevel()
 	{
 		if(Application.loadedLevel < Application.levelCount)
 		{
-			CSoundEngine.postEvent("Play_BreathEnd", gameObject);
+			CSoundEngine.postEvent("Play_BreathEnd", null);
 			Application.LoadLevel(Application.loadedLevel+1);
 		}
 	}
