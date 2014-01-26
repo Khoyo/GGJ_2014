@@ -401,7 +401,7 @@ public class CPlayer : MonoBehaviour
 
 	void OnTriggerStay(Collider other)
 	{
-		if(other.CompareTag("Echelle"))
+		if(other.CompareTag("Echelle") && m_eState == EState.e_Furtif)
 		{
 			m_bIsOnLadder = true;
 		}
