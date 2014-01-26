@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class CPlayer : MonoBehaviour 
@@ -209,13 +209,13 @@ public class CPlayer : MonoBehaviour
 		gameObject.transform.FindChild("Head").RotateAroundLocal(new Vector3(1,0,0), m_fVelocityRotation * (m_fAngleY - fAngleBeforeY));
 	}
 
-	void MoveOnLadder()
+	public void Die()
 	{
 		Vector3 vDirection = new Vector3(0, CApoilInput.InputPlayer.MoveForward ? 1.0f : 0.0f, 0);
 		gameObject.transform.Translate(vDirection/5);
 	}
 
-	void Die()
+	void MoveOnLadder()
 	{
 		CSoundEngine.postEvent("Play_DiePlayer", gameObject);
 		Application.LoadLevel(Application.loadedLevel);
@@ -420,7 +420,7 @@ public class CPlayer : MonoBehaviour
 
 	void OnTriggerStay(Collider other)
 	{
-		if(other.CompareTag("Echelle"))
+		if(other.CompareTag("Echelle") && m_eState == EState.e_Furtif)
 		{
 			m_bIsOnLadder = true;
 		}

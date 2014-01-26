@@ -12,7 +12,14 @@ public class CHunter : MonoBehaviour {
 	void Update () {
 		GameObject player = GameObject.Find("Player");
 		if(GetComponent<CEnnemi>().m_bHaveLineOfSight && player.GetComponent<CPlayer>().getState() != CPlayer.EState.e_Charismatique)
-			Alert(player);
+		{	Alert(player);
+
+			RaycastHit hit;
+			Vector3 lineOfSight = player.transform.position-transform.position;
+			Physics.Raycast(new Ray(transform.position, transform.localToWorldMatrix * new Vector3(0, 0, 1)), out hit, lineOfSight.magnitude, ~(1<<8));
+			if(hit.collider != null && hit.collider.name == "Player")
+				hit.collider.GetComponent<CPlayer>().Die();
+		}
 
 	}
 

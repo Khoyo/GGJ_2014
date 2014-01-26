@@ -14,8 +14,8 @@ GameObject:
   m_Name: Support
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 1
-  m_StaticEditorFlags: 8
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &100002
 GameObject:
@@ -31,8 +31,8 @@ GameObject:
   m_Name: Porte_Gauche
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 1
-  m_StaticEditorFlags: 8
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &100004
 GameObject:
@@ -48,8 +48,8 @@ GameObject:
   m_Name: Porte_Droite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 1
-  m_StaticEditorFlags: 8
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &100006
 GameObject:
@@ -74,8 +74,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: -.707106888, y: 0, z: -0, w: .707106769}
-  m_LocalPosition: {x: .149999991, y: .149999991, z: 0}
-  m_LocalScale: {x: 1.13481855, y: 1.50000012, z: 16.1234646}
+  m_LocalPosition: {x: .0299999993, y: .0299999993, z: 0}
+  m_LocalScale: {x: .226963699, y: .300000012, z: 3.22469282}
   m_Children: []
   m_Father: {fileID: 400006}
 --- !u!4 &400002
@@ -85,8 +85,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: -3.77489506e-08, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: .0749999955, y: .204999998, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 1.99999988}
+  m_LocalPosition: {x: .0276837982, y: .0284999982, z: -.0031467001}
+  m_LocalScale: {x: .5, y: .5, z: .399999976}
   m_Children: []
   m_Father: {fileID: 400006}
 --- !u!4 &400004
@@ -96,8 +96,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100004}
   m_LocalRotation: {x: -.707106888, y: 0, z: -0, w: .707106769}
-  m_LocalPosition: {x: -.0700000003, y: .149999991, z: 0}
-  m_LocalScale: {x: 6.82495594, y: 1.50000012, z: 16.1234646}
+  m_LocalPosition: {x: -.0276499018, y: .0285, z: -.00300000003}
+  m_LocalScale: {x: 1.36499119, y: .300000012, z: 3.22469282}
   m_Children: []
   m_Father: {fileID: 400006}
 --- !u!4 &400006
@@ -107,8 +107,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100006}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -33.3901749, y: .666678905, z: 31.8225956}
-  m_LocalScale: {x: 13.2169514, y: 15.5161619, z: 13.2169514}
+  m_LocalPosition: {x: 30.6239319, y: 2.06643009, z: 19.9848099}
+  m_LocalScale: {x: 88.3514175, y: 88.3514175, z: 88.3514175}
   m_Children:
   - {fileID: 400004}
   - {fileID: 400002}
@@ -207,7 +207,7 @@ Animator:
   m_GameObject: {fileID: 100006}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 7ebff670eefa8cb4ab717311e3c55e91, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b977a3624c4ca844a975afda4e1369df, type: 2}
   m_CullingMode: 0
   m_ApplyRootMotion: 1
   m_AnimatePhysics: 0
