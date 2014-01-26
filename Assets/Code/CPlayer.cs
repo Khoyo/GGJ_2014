@@ -222,13 +222,13 @@ public class CPlayer : MonoBehaviour
 		gameObject.transform.FindChild("Head").RotateAroundLocal(new Vector3(1,0,0), m_fVelocityRotation * (m_fAngleY - fAngleBeforeY));
 	}
 
-	public void Die()
+	void MoveOnLadder()
 	{
 		Vector3 vDirection = new Vector3(0, CApoilInput.InputPlayer.MoveForward ? 1.0f : 0.0f, 0);
 		gameObject.transform.Translate(vDirection/5);
 	}
 
-	void MoveOnLadder()
+	public void Die()
 	{
 		CSoundEngine.postEvent("Play_DiePlayer", gameObject);
 		Application.LoadLevel(Application.loadedLevel);
