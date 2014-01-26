@@ -198,7 +198,7 @@ public class CPlayer : MonoBehaviour
 		gameObject.transform.FindChild("Head").RotateAroundLocal(new Vector3(1,0,0), m_fVelocityRotation * (m_fAngleY - fAngleBeforeY));
 	}
 
-	void Die()
+	public void Die()
 	{
 		Application.LoadLevel(Application.loadedLevel);
 	}
