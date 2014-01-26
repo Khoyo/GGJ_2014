@@ -25,10 +25,10 @@ You have 4 types of ennemies:
 
 Credits
 ========
-Programmer : Timothée Chevalier and Younes Khoudi
-3D Artist : Florian JEANNE
-Game Design : Alexandre Suzanne
-Special thank to : Arthur Blavier
+- Programmer : Timothée Chevalier and Younes Khoudli
+- 3D Artist : Florian JEANNE
+- Game Designer : Alexandre Suzanne
+- Special thank to : Arthur Blavier
 
 Licence
 ========
