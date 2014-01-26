@@ -44,6 +44,7 @@ public class CPlayer : MonoBehaviour
 	bool m_bSneak;
 	bool m_bIsOnLadder;
 	bool m_bSoundCutIsPlayed;
+	bool m_bSoundPisseIsPlayed;
 	int m_nNbFrameGatling;
 
 	public GameObject m_Batteuse, m_Couteau, m_Boobs, m_Pisse;
@@ -64,6 +65,7 @@ public class CPlayer : MonoBehaviour
 		m_SwitchState = false;
 		m_bIsInSwitch = false;
 		m_bSoundCutIsPlayed = false;
+		m_bSoundPisseIsPlayed = false;
 		SwitchState();
 		m_fCoeffVelocityGateling = 0.0f;
 
@@ -362,12 +364,19 @@ public class CPlayer : MonoBehaviour
 	{
 		//m_Pisse.SetActive(true);
 		m_Pisse.GetComponent<ParticleSystem>().enableEmission = true;
+		if(!m_bSoundPisseIsPlayed)
+		{
+			CSoundEngine.postEvent("Play_Pisse", gameObject);
+			m_bSoundPisseIsPlayed = true;
+		}
 	}
 
 	void StopPisse()
 	{
 		//m_Pisse.SetActive(false);
 		m_Pisse.GetComponent<ParticleSystem>().enableEmission = false;
+		CSoundEngine.postEvent("Stop_Pisse", gameObject);
+		m_bSoundPisseIsPlayed = false;
 	}
 
 	void EntreDeuxChangement()

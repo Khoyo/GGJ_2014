@@ -2822,6 +2822,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: .969514906
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 59744b4b75abdc34ca63304a2a316200, type: 2}
+      propertyPath: m_Pisse
+      value: 
+      objectReference: {fileID: 184407425}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 59744b4b75abdc34ca63304a2a316200, type: 2}
   m_RootGameObject: {fileID: 1798890606}
@@ -9921,6 +9925,7 @@ MonoBehaviour:
   m_Batteuse: {fileID: 1828878058}
   m_Couteau: {fileID: 1273538098}
   m_Boobs: {fileID: 1370104613}
+  m_Pisse: {fileID: 184407425}
 --- !u!114 &1798890613
 MonoBehaviour:
   m_ObjectHideFlags: 0

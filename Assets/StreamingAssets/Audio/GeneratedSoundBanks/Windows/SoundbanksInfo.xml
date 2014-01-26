@@ -30,8 +30,10 @@
 				<Event Id="1909708863" Name="Play_DiePlayer" />
 				<Event Id="434087672" Name="Play_GunFire" />
 				<Event Id="1315091481" Name="Play_GunTouch" />
+				<Event Id="1700937786" Name="Play_Pisse" />
 				<Event Id="81759402" Name="Play_Switch" />
 				<Event Id="1583215645" Name="Play_WilhelmScream" />
+				<Event Id="1302282156" Name="Stop_Pisse" />
 			</IncludedEvents>
 			<IncludedDialogueEvents />
 			<ReferencedStreamedFiles />
@@ -63,6 +65,10 @@
 				<File Id="181213917" Language="SFX">
 					<ShortName>Gun_Touch.wav</ShortName>
 					<Path>sfx\gun_touch_ddc98ef4.wem</Path>
+				</File>
+				<File Id="1008380100" Language="SFX">
+					<ShortName>pisse.wav</ShortName>
+					<Path>sfx\pisse_f8e74a04.wem</Path>
 				</File>
 				<File Id="915730690" Language="SFX">
 					<ShortName>Switch.wav</ShortName>
