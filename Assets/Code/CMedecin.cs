@@ -20,7 +20,7 @@ public class CMedecin : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		GameObject player = GameObject.Find("Player");
-		if(GetComponent<CEnnemi>().m_bHaveLineOfSight && player.GetComponent<CPlayer>().getState() != CPlayer.EState.e_Charismatique)
+		if(GetComponent<CEnnemi>().m_bHaveLineOfSight && player.GetComponent<CPlayer>().getState() != CPlayer.EState.e_Charismatique && player.GetComponent<CPlayer>().getState() != CPlayer.EState.e_MauvaisGout)
 			Alert(player);
 
 		foreach(GameObject ass in m_Assistants)
@@ -38,7 +38,7 @@ public class CMedecin : MonoBehaviour {
 
 			Vector3 lineOfSight = ass.transform.position-transform.position;
 			RaycastHit hit;
-			Physics.Raycast(new Ray(transform.position, lineOfSight), out hit, lineOfSight.magnitude, ~(1<<8));
+			Physics.Raycast(new Ray(transform.position, lineOfSight), out hit, lineOfSight.magnitude, ~((1<<8)|(1<<9)));
 			if (hit.collider != null && hit.collider.gameObject != ass){
 				continue;
 			}

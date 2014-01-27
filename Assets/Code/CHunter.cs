@@ -11,12 +11,12 @@ public class CHunter : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		GameObject player = GameObject.Find("Player");
-		if(GetComponent<CEnnemi>().m_bHaveLineOfSight && player.GetComponent<CPlayer>().getState() != CPlayer.EState.e_Charismatique)
+		if(GetComponent<CEnnemi>().m_bHaveLineOfSight && player.GetComponent<CPlayer>().getState() != CPlayer.EState.e_Charismatique && player.GetComponent<CPlayer>().getState() != CPlayer.EState.e_MauvaisGout)
 		{	Alert(player);
 
 			RaycastHit hit;
 			Vector3 lineOfSight = player.transform.position-transform.position;
-			Physics.Raycast(new Ray(transform.position, transform.TransformDirection(new Vector3(0, 0, 1))), out hit, lineOfSight.magnitude, ~(1<<8));
+			Physics.Raycast(new Ray(transform.position, transform.TransformDirection(new Vector3(0, 0, 1))), out hit, lineOfSight.magnitude, ~((1<<8)|(1<<9)));
 			if(hit.collider != null && hit.collider.name == "Player")
 				hit.collider.GetComponent<CPlayer>().Die();
 

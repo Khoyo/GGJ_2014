@@ -28,7 +28,7 @@ public class CPlayer : MonoBehaviour
 	float m_fTimerGateling;
 	float m_fCadenceGateling = 1/10.0f;
 	float m_fTimerCut;
-	float m_fCadenceCut = 1/2.0f;
+	float m_fCadenceCut = 1/6.0f;
 	float m_fCoeffVelocityGateling;
 	float m_fRadiusCut = 2.0f;
 	float m_fTimerSwitch;
@@ -75,6 +75,13 @@ public class CPlayer : MonoBehaviour
 		m_nNbFrameGatling = 0;
 		gameObject.transform.FindChild("Head").FindChild("light").gameObject.SetActive(false);
 		StopPisse();
+
+		foreach(AnimationState anim in m_Couteau.animation)
+		{
+			//anim.wrapMode = WrapMode.Once;
+			anim.speed = 6;
+		}
+
 	}
 	
 	// Update is called once per frame
@@ -320,7 +327,7 @@ public class CPlayer : MonoBehaviour
 	{
 		RaycastHit hit;
 		GameObject cam = gameObject.transform.FindChild("Head").FindChild("MainCamera").gameObject;
-		Physics.Raycast(cam.transform.position, cam.transform.forward,out hit);
+		Physics.Raycast(cam.transform.position, cam.transform.forward,out hit, 100000, ~(1<<9));
 
 		if(m_fTimerGateling >= 0.0f)
 			m_fTimerGateling -= Time.deltaTime;
@@ -334,6 +341,8 @@ public class CPlayer : MonoBehaviour
 				m_nNbFrameGatling = 0;
 			}
 			m_fTimerGateling = m_fCadenceGateling;
+			if(hit.collider != null)
+				Debug.Log ("blocked by "+hit.collider.name);
 			if (hit.collider != null && hit.collider.CompareTag("Ennemies"))
 			{
 				//print ("Blocked by " + hit.collider.name);
@@ -370,6 +379,7 @@ public class CPlayer : MonoBehaviour
 				CSoundEngine.postEvent("Play_CutHit", gameObject);
 				hit.collider.gameObject.GetComponent<CEnnemi>().TakeCut();
 				m_fTimerCut = m_fCadenceCut;
+				gameObject.transform.FindChild("Head").FindChild("MainEtCouteau").animation.Play();
 				//GameObject newImpact;
 				//newImpact = (Instantiate(m_Impact, hit.collider.gameObject. transform.position, Quaternion.identity) as GameObject);
 				//newImpact.transform.parent = hit.collider.gameObject.transform;
@@ -380,6 +390,7 @@ public class CPlayer : MonoBehaviour
 				CSoundEngine.postEvent("Play_CutMiss", gameObject);
 				m_bSoundCutIsPlayed = true;
 				m_fTimerCut = m_fCadenceCut;
+				gameObject.transform.FindChild("Head").FindChild("MainEtCouteau").animation.Play();
 			}
 		}
 
