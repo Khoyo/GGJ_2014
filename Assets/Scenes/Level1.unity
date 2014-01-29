@@ -1439,6 +1439,14 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: .707106829
       objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 72b9bdc88cb514847b3ce1c82e4c9c87, type: 2}
+      propertyPath: m_bSortie
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: 72b9bdc88cb514847b3ce1c82e4c9c87, type: 2}
+      propertyPath: m_bSortie
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 72b9bdc88cb514847b3ce1c82e4c9c87, type: 2}
   m_RootGameObject: {fileID: 1035288580}
@@ -10350,6 +10358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56fabcade8310ba4bb17a10721c031f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_bSortie: 1
 --- !u!65 &945668809
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11887,6 +11896,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56fabcade8310ba4bb17a10721c031f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_bSortie: 1
 --- !u!111 &1035288583
 Animation:
   m_ObjectHideFlags: 0
@@ -16421,7 +16431,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 1633551729}
   m_GameObject: {fileID: 1559336465}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}

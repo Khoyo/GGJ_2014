@@ -3,8 +3,11 @@ using System.Collections;
 
 public class CScriptTriggerNiveau : MonoBehaviour {
 
-	void OnTriggerEnter(Collider col){
-		if(col.name == "Player" )
+	public bool m_bSortie;
+
+	void OnTriggerEnter(Collider col)
+	{
+		if(col.name == "Player" && m_bSortie)
 		{
 			CGame.GoToNextLevel();
 		}
