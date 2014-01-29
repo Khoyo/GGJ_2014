@@ -11,14 +11,37 @@ public class CGame : MonoBehaviour
 	public static int m_fHeight = 720;
 	public bool LD_LevelFixeSansSwitch;
 	public static bool m_bLevelFixeSansSwitch;
+	public bool LD_CeLevelCommenceParUnAscenseur;
+	public static bool m_bStartWithElevator;
+
+	static int m_instanceCount = 0;
+	bool m_bStartCalled = false;
+
+
 	// Use this for initialization
 	void Start () 
 	{
+		m_bStartCalled =true;
+		if(m_instanceCount++ != 0){
+			//We are not the first CGame object :'( we need to abort !!
+			Debug.Log("Deleting redundant _Game");
+			Object.Destroy(gameObject);
+			gameObject.name = "_Game____todestroydonotuseseriouslyimeanit";
+			return;
+		}
+
+		if(GameObject.Find("_Game") != null)
+		{
+			Debug.Log ("youhou");
+		}
+
 		CApoilInput.Init();
 		m_bDebug = false;
-		m_bLevelFixeSansSwitch = LD_LevelFixeSansSwitch;
 		CSoundEngine.Init();
 		CSoundEngine.LoadBank(soundbankName);
+
+		m_bLevelFixeSansSwitch = LD_LevelFixeSansSwitch;
+		m_bStartWithElevator = LD_CeLevelCommenceParUnAscenseur;
 	}
 	
 	// Update is called once per frame

@@ -15698,7 +15698,7 @@ GameObject:
   - 114: {fileID: 444419305}
   - 114: {fileID: 444419304}
   m_Layer: 0
-  m_Name: Game
+  m_Name: _Game
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15748,6 +15748,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LD_bDebug: 1
   LD_LevelFixeSansSwitch: 0
+  LD_CeLevelCommenceParUnAscenseur: 1
 --- !u!4 &444419307
 Transform:
   m_ObjectHideFlags: 0
@@ -45364,6 +45365,14 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e3a161730c7088f46b38bcad549b4993, type: 2}
       propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e3a161730c7088f46b38bcad549b4993, type: 2}
+      propertyPath: m_Name
+      value: _Game
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: e3a161730c7088f46b38bcad549b4993, type: 2}
+      propertyPath: LD_CeLevelCommenceParUnAscenseur
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
