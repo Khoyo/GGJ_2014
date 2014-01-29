@@ -15,13 +15,11 @@ public class CGame : MonoBehaviour
 	public static bool m_bStartWithElevator;
 
 	static int m_instanceCount = 0;
-	bool m_bStartCalled = false;
 
 
 	// Use this for initialization
 	void Start () 
 	{
-		m_bStartCalled =true;
 		if(m_instanceCount++ != 0){
 			//We are not the first CGame object :'( we need to abort !!
 			Debug.Log("Deleting redundant _Game");

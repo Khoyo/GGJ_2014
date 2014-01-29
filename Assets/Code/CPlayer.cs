@@ -25,14 +25,13 @@ public class CPlayer : MonoBehaviour
 	float m_fVelocityRotation = 0.2f;
 	float m_fVelocityJump = 8.0f;
 	float m_fAngleY;
-	float m_fTimerJump;
-	float m_fTimerJumpMax = 1.0f;
 	float m_fTimerGateling;
 	float m_fCadenceGateling = 1/10.0f;
 	float m_fTimerCut;
 	float m_fCadenceCut = 1/6.0f;
 	float m_fCoeffVelocityGateling;
 	float m_fRadiusCut = 2.0f;
+	float m_fRadiusPisse = 4.0f;
 	float m_fTimerSwitch;
 	float m_fTimerSwitchMax = 3.0f;
 
@@ -55,7 +54,6 @@ public class CPlayer : MonoBehaviour
 	void Start () 
 	{
 		m_fAngleY = 0.0f;
-		m_fTimerJump = 0.0f;
 		m_fVelocityRun = 1.0f;
 		m_fTimerGateling = 0.0f;
 		m_fTimerSwitch = 0.0f;
@@ -157,10 +155,6 @@ public class CPlayer : MonoBehaviour
 		{
 			EntreDeuxChangement();
 		}
-
-
-		if(m_fTimerJump >= 0.0f)
-			m_fTimerJump -= Time.deltaTime;
 
 		if(m_fCoeffVelocityGateling > 0.0f)
 			m_fCoeffVelocityGateling -= Time.deltaTime;
@@ -413,7 +407,7 @@ public class CPlayer : MonoBehaviour
 		}
 
 	}
-
+	
 	void FirePisse()
 	{
 		//m_Pisse.SetActive(true);
@@ -422,6 +416,21 @@ public class CPlayer : MonoBehaviour
 		{
 			CSoundEngine.postEvent("Play_Pisse", gameObject);
 			m_bSoundPisseIsPlayed = true;
+		}
+
+		RaycastHit hit;
+		GameObject cam = gameObject.transform.FindChild("Head").FindChild("MainCamera").gameObject;
+		Physics.Raycast(cam.transform.position, cam.transform.forward,out hit, m_fRadiusPisse, ~(1<<9));
+		
+		if (hit.collider != null && hit.collider.CompareTag("Ennemies"))
+		{
+			//print ("Blocked by " + hit.collider.name);
+			//Object.Destroy(collider.gameObject);
+			hit.collider.gameObject.GetComponent<CEnnemi>().TakeCut();
+			//GameObject newImpact;
+			//newImpact = (Instantiate(m_Impact, hit.collider.gameObject. transform.position, Quaternion.identity) as GameObject);
+			//newImpact.transform.parent = hit.collider.gameObject.transform;
+			
 		}
 	}
 
