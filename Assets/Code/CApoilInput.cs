@@ -63,7 +63,7 @@ public class CApoilInput
 		
 		Quit = Input.GetKeyDown(KeyCode.Escape);
 
-		DebugNum4 = false;//Input.GetKeyDown(KeyCode.Alpha4);
+		DebugNum4 = Input.GetKeyDown(KeyCode.Alpha4);
 		DebugF9 = false;//Input.GetKeyDown(KeyCode.F9);
 		DebugF10 = false;//Input.GetKeyDown(KeyCode.F10);
 		DebugF11 = false;//Input.GetKeyDown(KeyCode.F11);

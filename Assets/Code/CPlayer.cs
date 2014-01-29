@@ -89,7 +89,7 @@ public class CPlayer : MonoBehaviour
 			//anim.wrapMode = WrapMode.Once;
 			anim.speed = 6;
 		}
-
+		ResetHeadRotation();
 	}
 	
 	// Update is called once per frame
@@ -468,6 +468,7 @@ public class CPlayer : MonoBehaviour
 				m_Batteuse.SetActive(false);
 				m_Couteau.SetActive(true);
 				m_Boobs.SetActive(false);
+				ResetHeadRotation();
 				break;
 			}
 			case EState.e_Bourin:
@@ -478,6 +479,7 @@ public class CPlayer : MonoBehaviour
 				m_Batteuse.SetActive(true);
 				m_Couteau.SetActive(false);
 				m_Boobs.SetActive(false);
+				ResetHeadRotation();
 				break;
 			}
 			case EState.e_Charismatique:
@@ -488,6 +490,7 @@ public class CPlayer : MonoBehaviour
 				m_Batteuse.SetActive(false);
 				m_Couteau.SetActive(false);
 				m_Boobs.SetActive(true);
+				ResetHeadRotation();
 				break;
 			}
 			case EState.e_MauvaisGout:
@@ -501,6 +504,14 @@ public class CPlayer : MonoBehaviour
 				break;
 			}
 		}
+	}
+
+	void ResetHeadRotation()
+	{
+		Quaternion rot = gameObject.transform.FindChild ("Head").localRotation;
+		rot.y = 0;
+		rot.z = 0;
+		gameObject.transform.FindChild ("Head").localRotation = rot;
 	}
 
 	void OnTriggerStay(Collider other)

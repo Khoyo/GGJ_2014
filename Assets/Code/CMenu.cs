@@ -16,7 +16,6 @@ public class CMenu : MonoBehaviour
 	EmenuState m_EState;
 	float m_fTempsSplash;
 	float m_fTempsSplashInit = 2.0f;
-	float m_fTempsVideoIntro;
 	bool m_bLaunchGame;
 	
 	public Texture m_Texture_Fond;
@@ -28,7 +27,6 @@ public class CMenu : MonoBehaviour
 	{
 		m_fTempsSplash = m_fTempsSplashInit;
 		m_EState = EmenuState.e_splash;
-		m_fTempsVideoIntro = 0.0f;
 		m_bLaunchGame = false;
 
 		m_fWidth = CGame.m_fWidth;

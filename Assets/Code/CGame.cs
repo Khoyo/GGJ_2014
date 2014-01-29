@@ -30,11 +30,6 @@ public class CGame : MonoBehaviour
 			return;
 		}
 
-		if(GameObject.Find("_Game") != null)
-		{
-			Debug.Log ("youhou");
-		}
-
 		CApoilInput.Init();
 		m_bDebug = false;
 		CSoundEngine.Init();
