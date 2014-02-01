@@ -27,6 +27,8 @@ public class CPlayer : MonoBehaviour
 	float m_fAngleY;
 	float m_fTimerGateling;
 	float m_fCadenceGateling = 1/10.0f;
+	float m_fTimerPisse;
+	float m_fCadencePisse = 1/10.0f;
 	float m_fTimerCut;
 	float m_fCadenceCut = 1/6.0f;
 	float m_fCoeffVelocityGateling;
@@ -57,6 +59,8 @@ public class CPlayer : MonoBehaviour
 		m_fVelocityRun = 1.0f;
 		m_fTimerGateling = 0.0f;
 		m_fTimerSwitch = 0.0f;
+		m_fTimerPisse = 0.0f;
+		m_fTimerCut = 0.0f;
 		m_eState = EState.e_Furtif;
 
 		m_eStateToGo = m_eState;
@@ -421,16 +425,24 @@ public class CPlayer : MonoBehaviour
 		RaycastHit hit;
 		GameObject cam = gameObject.transform.FindChild("Head").FindChild("MainCamera").gameObject;
 		Physics.Raycast(cam.transform.position, cam.transform.forward,out hit, m_fRadiusPisse, ~(1<<9));
+
+		if(m_fTimerPisse >= 0.0f)
+			m_fTimerPisse -= Time.deltaTime;
 		
-		if (hit.collider != null && hit.collider.CompareTag("Ennemies"))
+		if(m_fTimerPisse < 0.0f)
 		{
-			//print ("Blocked by " + hit.collider.name);
-			//Object.Destroy(collider.gameObject);
-			hit.collider.gameObject.GetComponent<CEnnemi>().TakeCut();
-			//GameObject newImpact;
-			//newImpact = (Instantiate(m_Impact, hit.collider.gameObject. transform.position, Quaternion.identity) as GameObject);
-			//newImpact.transform.parent = hit.collider.gameObject.transform;
-			
+
+			if (hit.collider != null && hit.collider.CompareTag("Ennemies"))
+			{
+				//print ("Blocked by " + hit.collider.name);
+				//Object.Destroy(collider.gameObject);
+				hit.collider.gameObject.GetComponent<CEnnemi>().TakePisseHit();
+				m_fTimerPisse = m_fCadencePisse;
+				//GameObject newImpact;
+				//newImpact = (Instantiate(m_Impact, hit.collider.gameObject. transform.position, Quaternion.identity) as GameObject);
+				//newImpact.transform.parent = hit.collider.gameObject.transform;
+				
+			}
 		}
 	}
 

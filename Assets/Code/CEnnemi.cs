@@ -40,7 +40,11 @@ public class CEnnemi : MonoBehaviour {
 	public void TakeBullet()
 	{
 		m_nLife--;
+	}
 
+	public void TakePisseHit()
+	{
+		m_nLife -= 10;
 	}
 
 	public void TakeCut()
