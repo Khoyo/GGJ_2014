@@ -10,8 +10,8 @@ GameObject:
   - 4: {fileID: 400000}
   - 108: {fileID: 10800000}
   m_Layer: 0
-  m_Name: Directional light
-  m_TagString: Untagged
+  m_Name: light
+  m_TagString: light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,8 +26,8 @@ GameObject:
   - 4: {fileID: 400002}
   - 108: {fileID: 10800002}
   m_Layer: 0
-  m_Name: Directional light
-  m_TagString: Untagged
+  m_Name: light
+  m_TagString: light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,6 +43,7 @@ GameObject:
   - 33: {fileID: 3300000}
   - 65: {fileID: 6500000}
   - 23: {fileID: 2300000}
+  - 114: {fileID: 11400000}
   m_Layer: 0
   m_Name: Neon
   m_TagString: Untagged
@@ -60,8 +61,8 @@ GameObject:
   - 4: {fileID: 400006}
   - 108: {fileID: 10800004}
   m_Layer: 0
-  m_Name: Directional light
-  m_TagString: Untagged
+  m_Name: light
+  m_TagString: light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130,8 +131,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100004}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -32.2921143, y: 5.21697998, z: 37.2248573}
+  m_LocalRotation: {x: 0, y: -.805505812, z: 0, w: .592587948}
+  m_LocalPosition: {x: -2.25578213, y: 4.94394112, z: -39.8792648}
   m_LocalScale: {x: 10, y: 1, z: 1}
   m_Children:
   - {fileID: 400010}
@@ -374,6 +375,18 @@ Light:
   m_ShadowAngle: 0
   m_IndirectIntensity: 1
   m_AreaSize: {x: 1, y: 1}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b954b8a4ba8d484fad7993a6551145c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_bIsNeon: 1
 --- !u!136 &13600000
 CapsuleCollider:
   m_ObjectHideFlags: 1

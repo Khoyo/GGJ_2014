@@ -28,6 +28,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400002}
+  - 114: {fileID: 11400000}
   m_Layer: 0
   m_Name: Lampe
   m_TagString: Untagged
@@ -186,7 +187,7 @@ GameObject:
   - 108: {fileID: 10800000}
   m_Layer: 0
   m_Name: Spotlight
-  m_TagString: Untagged
+  m_TagString: light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -201,8 +202,8 @@ GameObject:
   - 4: {fileID: 400020}
   - 108: {fileID: 10800002}
   m_Layer: 0
-  m_Name: Directional light
-  m_TagString: Untagged
+  m_Name: light
+  m_TagString: light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -292,7 +293,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -46.9023132, y: 7.72301388, z: -50.3219261}
+  m_LocalPosition: {x: 4.88788319, y: 4.5494957, z: -5.96554613}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400010}
@@ -891,7 +892,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 1, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -46.05299, y: 8.12942028, z: -49.5470238}
+  m_ConnectedAnchor: {x: 5.73720646, y: 4.95590162, z: -5.19064379}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -1036,7 +1037,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 1, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -1.31747742e-08, y: .168075562, z: .00679779053}
+  m_ConnectedAnchor: {x: -1.31751481e-08, y: .16808033, z: .00679779053}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -1094,7 +1095,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 1, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: -.977769852, z: -5.49561373e-05}
+  m_ConnectedAnchor: {x: 0, y: -.977768958, z: -6.13280354e-05}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -1197,6 +1198,18 @@ Light:
   m_ShadowAngle: 0
   m_IndirectIntensity: 1
   m_AreaSize: {x: 1, y: 1}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b954b8a4ba8d484fad7993a6551145c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_bIsNeon: 0
 --- !u!136 &13600000
 CapsuleCollider:
   m_ObjectHideFlags: 1
