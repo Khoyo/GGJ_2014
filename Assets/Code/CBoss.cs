@@ -11,7 +11,7 @@ public class CBoss : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		GameObject player = GameObject.Find("Player");
-		if(GetComponent<CEnnemi>().m_bHaveLineOfSight && player.GetComponent<CPlayer>().getState() != CPlayer.EState.e_MauvaisGout)
+		if(GetComponent<CEnnemi>().m_bHaveLineOfSight)
 			Alert(player);
 	}
 	
