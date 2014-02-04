@@ -13,22 +13,14 @@ public class CGame : MonoBehaviour
 	public static bool m_bLevelFixeSansSwitch;
 	public bool LD_CeLevelCommenceParUnAscenseur;
 	public static bool m_bStartWithElevator;
-
-	static int m_instanceCount = 0;
-	public bool isInitialized;
+	
+	public bool isInitialized = false;
+	public int tmp;
 
 	// Use this for initialization
 	void Start () 
 	{
-		isInitialized = false;
-		if(m_instanceCount++ != 0){
-			//We are not the first CGame object :'( we need to abort !!
-			Debug.Log("Deleting redundant _Game");
-			Object.Destroy(gameObject);
-			gameObject.name = "_Game____todestroydonotuseseriouslyimeanit";
-			return;
-		}
-
+		Object.DontDestroyOnLoad (gameObject);
 		CApoilInput.Init();
 		m_bDebug = false;
 		CSoundEngine.Init();
@@ -36,7 +28,7 @@ public class CGame : MonoBehaviour
 
 		m_bLevelFixeSansSwitch = LD_LevelFixeSansSwitch;
 		m_bStartWithElevator = LD_CeLevelCommenceParUnAscenseur;
-		isInitialized = true;
+
 	}
 	
 	// Update is called once per frame

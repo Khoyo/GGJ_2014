@@ -32,7 +32,7 @@ public class AkGlobalSoundEngineTerminator : MonoBehaviour
 
 	void OnDestroy()
     {
-		Terminate();
+			Terminate();
     }
 
 	void OnApplicationQuit()
@@ -42,12 +42,12 @@ public class AkGlobalSoundEngineTerminator : MonoBehaviour
 	
 	void Terminate()
 	{
-		if( (ms_Instance == null) || (!gameObject.GetComponent<CGame>().isInitialized) )
+		if(ms_Instance == null)
 		{
             return; //Don't term twice
         }
 
-        // NOTE: Do not check AkGlobalSoundEngine.IsInitialized()
+			//NOTE: Do not check AkGlobalSoundEngine.IsInitialized()
         //  since its OnDestroy() has been called first in the project exec priority list.
 		if (AkSoundEngine.IsInitialized())
 		{
