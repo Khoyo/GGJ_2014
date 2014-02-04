@@ -56,7 +56,7 @@ public class CApoilInput
 		InputPlayer.SwitchCharismatique = Input.GetKeyDown(KeyCode.Alpha3);
 
 		InputPlayer.Jump = Input.GetKeyDown(KeyCode.Space);
-		InputPlayer.Sneak = Input.GetKey(KeyCode.LeftControl);
+		InputPlayer.Sneak = false;//Input.GetKey(KeyCode.LeftControl);
 		InputPlayer.Run = Input.GetKey(KeyCode.LeftShift);
 
 		InputPlayer.Fire =  Input.GetMouseButton(0);
