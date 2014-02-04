@@ -42,7 +42,7 @@ public class AkGlobalSoundEngineTerminator : MonoBehaviour
 	
 	void Terminate()
 	{
-		if (ms_Instance == null)
+		if( (ms_Instance == null) || (!gameObject.GetComponent<CGame>().isInitialized) )
 		{
             return; //Don't term twice
         }

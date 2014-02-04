@@ -15,11 +15,12 @@ public class CGame : MonoBehaviour
 	public static bool m_bStartWithElevator;
 
 	static int m_instanceCount = 0;
-
+	public bool isInitialized;
 
 	// Use this for initialization
 	void Start () 
 	{
+		isInitialized = false;
 		if(m_instanceCount++ != 0){
 			//We are not the first CGame object :'( we need to abort !!
 			Debug.Log("Deleting redundant _Game");
@@ -35,6 +36,7 @@ public class CGame : MonoBehaviour
 
 		m_bLevelFixeSansSwitch = LD_LevelFixeSansSwitch;
 		m_bStartWithElevator = LD_CeLevelCommenceParUnAscenseur;
+		isInitialized = true;
 	}
 	
 	// Update is called once per frame
