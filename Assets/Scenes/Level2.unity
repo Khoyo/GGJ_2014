@@ -3355,6 +3355,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_prefabGame: {fileID: 100000, guid: e3a161730c7088f46b38bcad549b4993, type: 2}
+  LD_CeLevelCommenceParUnAscenseur: 1
+  LD_LevelFixeSansSwitch: 0
+  LD_bDebug: 0
 --- !u!4 &89588928
 Transform:
   m_ObjectHideFlags: 0
@@ -30802,6 +30805,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 157c715ecddd7e842912a706f4e77f10, type: 2}
       propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 157c715ecddd7e842912a706f4e77f10, type: 2}
+      propertyPath: LD_CeLevelCommenceParUnAscenseur
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

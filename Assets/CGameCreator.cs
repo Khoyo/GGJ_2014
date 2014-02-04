@@ -5,17 +5,23 @@ public class CGameCreator : MonoBehaviour {
 
 	static int m_instanceCount = 0;
 	public GameObject m_prefabGame;
+	public bool LD_CeLevelCommenceParUnAscenseur;
+	public bool LD_LevelFixeSansSwitch;
+	public bool LD_bDebug;
 	// Use this for initialization
 	void Awake() {
-		Object.DontDestroyOnLoad (gameObject);
 		if(m_instanceCount++ == 0){
-			GameObject.Instantiate(m_prefabGame);
+			CGame.m_bLevelFixeSansSwitch = LD_LevelFixeSansSwitch;
+			CGame.m_bStartWithElevator = LD_CeLevelCommenceParUnAscenseur;
+			CGame.m_bDebug = LD_bDebug;
+			CGame game = ((GameObject) GameObject.Instantiate(m_prefabGame)).GetComponent<CGame>();
+
 		}
 
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
+	void OnDestroy() {
+		m_instanceCount--;
 	}
 }

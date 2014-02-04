@@ -20,15 +20,9 @@ public class CGame : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-		Object.DontDestroyOnLoad (gameObject);
 		CApoilInput.Init();
-		m_bDebug = false;
 		CSoundEngine.Init();
 		CSoundEngine.LoadBank(soundbankName);
-
-		m_bLevelFixeSansSwitch = LD_LevelFixeSansSwitch;
-		m_bStartWithElevator = LD_CeLevelCommenceParUnAscenseur;
-
 	}
 	
 	// Update is called once per frame
