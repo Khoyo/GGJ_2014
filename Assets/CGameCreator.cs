@@ -6,7 +6,7 @@ public class CGameCreator : MonoBehaviour {
 	static int m_instanceCount = 0;
 	public GameObject m_prefabGame;
 	// Use this for initialization
-	void Start () {
+	void Awake() {
 		Object.DontDestroyOnLoad (gameObject);
 		if(m_instanceCount++ == 0){
 			GameObject.Instantiate(m_prefabGame);
