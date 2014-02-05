@@ -108,6 +108,7 @@ MonoBehaviour:
   LD_LevelFixeSansSwitch: 0
   LD_CeLevelCommenceParUnAscenseur: 0
   isInitialized: 0
+  tmp: 0
 --- !u!4 &31963233
 Transform:
   m_ObjectHideFlags: 0
