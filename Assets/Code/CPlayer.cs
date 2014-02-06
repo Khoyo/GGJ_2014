@@ -36,6 +36,10 @@ public class CPlayer : MonoBehaviour
 	float m_fRadiusPisse = 4.0f;
 	float m_fTimerSwitch;
 	float m_fTimerSwitchMax = 3.0f;
+	float m_fTimerStopSoundFootStep;
+	float m_fTimerStopSoundFootStepMax = 0.5f;
+	float m_fParamFootStepVelocity = 0.5f;
+	float m_fParamFootStepVelocityRun = 0.8f;
 
 	Vector3 vMoveDirection = Vector3.zero;
 
@@ -48,6 +52,7 @@ public class CPlayer : MonoBehaviour
 	bool m_bIsOnLadder;
 	bool m_bSoundCutIsPlayed;
 	bool m_bSoundPisseIsPlayed;
+	bool m_bSoundFootstepLaunched;
 	int m_nNbFrameGatling;
 
 	public GameObject m_Batteuse, m_Couteau, m_Boobs, m_Pisse;
@@ -73,6 +78,7 @@ public class CPlayer : MonoBehaviour
 		m_bSoundPisseIsPlayed = false;
 		SwitchState();
 		m_fCoeffVelocityGateling = 0.0f;
+		m_bSoundFootstepLaunched = false;
 
 		m_bSneak = false;
 		m_bIsOnLadder = false;
@@ -226,6 +232,8 @@ public class CPlayer : MonoBehaviour
 		controller.Move(vMoveDirection * Time.deltaTime);
 
 		gameObject.transform.RotateAround(new Vector3(0,1,0),m_fVelocityRotation * CApoilInput.InputPlayer.MouseAngleX);
+
+		SoundFootStep();
 	}
 	
 	void MoveHead()
@@ -250,10 +258,36 @@ public class CPlayer : MonoBehaviour
 		gameObject.transform.Translate(vDirection/5);
 	}
 
+	void SoundFootStep()
+	{
+		if(CApoilInput.InputPlayer.Move)
+		{
+			if(!m_bSoundFootstepLaunched)
+			{
+				CSoundEngine.postEvent ("Play_footStep", gameObject);
+				m_bSoundFootstepLaunched = true;
+				m_fTimerStopSoundFootStep = m_fTimerStopSoundFootStepMax;
+			}
+		}
+		else if(m_fTimerStopSoundFootStep < 0.0f)
+		{
+			CSoundEngine.postEvent ("Stop_footStep", gameObject);
+			m_bSoundFootstepLaunched = false;
+		}
+
+		m_fTimerStopSoundFootStep -= Time.deltaTime;
+
+		if(CApoilInput.InputPlayer.Run)
+			CSoundEngine.setRTPC ("Parameter_PitchFootStep", m_fParamFootStepVelocityRun, gameObject);
+		else 
+			CSoundEngine.setRTPC ("Parameter_PitchFootStep", m_fParamFootStepVelocity, gameObject);
+	}
+
 	public void Die()
 	{
 		StopPisse();
 		CSoundEngine.postEvent("Play_DiePlayer", gameObject);
+		CSoundEngine.postEvent("Stop_footStep", gameObject);
 		Application.LoadLevel(Application.loadedLevel);
 	}
 

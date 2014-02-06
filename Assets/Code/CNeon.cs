@@ -62,5 +62,6 @@ public class CNeon : MonoBehaviour
 	{
 		m_nIdLightCracking = Random.Range(0, m_nNbLight);
 		m_fTimerCracking = 0.0f;
+		CSoundEngine.postEvent("Play_NeonBuzz", gameObject);
 	}
 }

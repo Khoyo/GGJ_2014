@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" SchemaVersion="9">
 	<RootPaths>
-		<ProjectRoot>C:\Users\tim-asus\Desktop\Wwise_GGJ2014\GGJ_2014\</ProjectRoot>
-		<SourceFilesRoot>C:\Users\tim-asus\Desktop\Wwise_GGJ2014\GGJ_2014\.cache\Windows\</SourceFilesRoot>
-		<SoundBanksRoot>C:\Users\tim-asus\Desktop\Wwise_GGJ2014\GGJ_2014\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ProjectRoot>C:\Users\APOIL-8\Desktop\Wwise_GGJ2014\GGJ_2014\</ProjectRoot>
+		<SourceFilesRoot>C:\Users\APOIL-8\Desktop\Wwise_GGJ2014\GGJ_2014\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>C:\Users\APOIL-8\Desktop\Wwise_GGJ2014\GGJ_2014\GeneratedSoundBanks\Windows\</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>C:\Users\tim-asus\Desktop\Wwise_GGJ2014\GGJ_2014\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>C:\Users\APOIL-8\Desktop\Wwise_GGJ2014\GGJ_2014\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents />
 	<StreamedFiles />
@@ -28,11 +28,14 @@
 				<Event Id="3832649301" Name="Play_CutHit" />
 				<Event Id="2830233258" Name="Play_CutMiss" />
 				<Event Id="1909708863" Name="Play_DiePlayer" />
+				<Event Id="1602358412" Name="Play_footStep" />
 				<Event Id="434087672" Name="Play_GunFire" />
 				<Event Id="1315091481" Name="Play_GunTouch" />
+				<Event Id="1558858565" Name="Play_NeonBuzz" />
 				<Event Id="1700937786" Name="Play_Pisse" />
 				<Event Id="81759402" Name="Play_Switch" />
 				<Event Id="1583215645" Name="Play_WilhelmScream" />
+				<Event Id="3927559978" Name="Stop_footStep" />
 				<Event Id="1302282156" Name="Stop_Pisse" />
 			</IncludedEvents>
 			<IncludedDialogueEvents />
@@ -58,6 +61,10 @@
 					<ShortName>EndLevel.wav</ShortName>
 					<Path>sfx\endlevel_ddc98ef4.wem</Path>
 				</File>
+				<File Id="24575237" Language="SFX">
+					<ShortName>footStep.wav</ShortName>
+					<Path>sfx\footstep_23e654fe.wem</Path>
+				</File>
 				<File Id="656950511" Language="SFX">
 					<ShortName>Gun_Fire.wav</ShortName>
 					<Path>sfx\gun_fire_ddc98ef4.wem</Path>
@@ -65,6 +72,10 @@
 				<File Id="181213917" Language="SFX">
 					<ShortName>Gun_Touch.wav</ShortName>
 					<Path>sfx\gun_touch_ddc98ef4.wem</Path>
+				</File>
+				<File Id="817489826" Language="SFX">
+					<ShortName>NeonBuzz.wav</ShortName>
+					<Path>sfx\neonbuzz_ddc98ef4.wem</Path>
 				</File>
 				<File Id="1008380100" Language="SFX">
 					<ShortName>pisse.wav</ShortName>

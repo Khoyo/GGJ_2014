@@ -7,6 +7,7 @@ public struct SPlayerInput
 	public bool MoveRight;
 	public bool MoveForward;
 	public bool MoveBackward;
+	public bool Move;
 	public bool Jump;
 	public bool Sneak;
 	public bool Run;
@@ -47,7 +48,9 @@ public class CApoilInput
 		InputPlayer.MoveBackward = Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow);
 		InputPlayer.MoveLeft = Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A);;
 		InputPlayer.MoveRight = Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow);		
-		
+
+		InputPlayer.Move = InputPlayer.MoveForward || InputPlayer.MoveBackward || InputPlayer.MoveLeft || InputPlayer.MoveRight;
+
 		InputPlayer.MouseAngleX = Input.GetAxis("Mouse X");
 		InputPlayer.MouseAngleY = -Input.GetAxis("Mouse Y");
 
