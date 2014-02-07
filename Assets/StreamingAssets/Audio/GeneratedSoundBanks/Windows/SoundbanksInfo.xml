@@ -33,6 +33,7 @@
 				<Event Id="1602358412" Name="Play_footStep" />
 				<Event Id="434087672" Name="Play_GunFire" />
 				<Event Id="1315091481" Name="Play_GunTouch" />
+				<Event Id="1038605896" Name="Play_HospitalAmbiance" />
 				<Event Id="1558858565" Name="Play_NeonBuzz" />
 				<Event Id="4143125550" Name="Play_OpenDoor" />
 				<Event Id="1700937786" Name="Play_Pisse" />
@@ -40,6 +41,7 @@
 				<Event Id="1583215645" Name="Play_WilhelmScream" />
 				<Event Id="452547817" Name="Stop_All" />
 				<Event Id="3927559978" Name="Stop_footStep" />
+				<Event Id="2353348466" Name="Stop_HospitalAmbiance" />
 				<Event Id="1302282156" Name="Stop_Pisse" />
 			</IncludedEvents>
 			<IncludedDialogueEvents />
@@ -84,6 +86,10 @@
 				<File Id="181213917" Language="SFX">
 					<ShortName>Gun_Touch.wav</ShortName>
 					<Path>sfx\gun_touch_ddc98ef4.wem</Path>
+				</File>
+				<File Id="643101166" Language="SFX">
+					<ShortName>Hospital (Nurses Station_ General.wav</ShortName>
+					<Path>sfx\hospital (nurses station_ general_f808b7fc.wem</Path>
 				</File>
 				<File Id="817489826" Language="SFX">
 					<ShortName>NeonBuzz.wav</ShortName>

@@ -36,6 +36,8 @@ public class CGame : MonoBehaviour
 		m_bEndLevel = false;
 		m_bStartLevel = true;
 		CGame.m_TextureBlack = GameObject.Find("Player").GetComponent<CPlayer>().m_TextureBlack;
+
+		CSoundEngine.postEvent("Play_HospitalAmbiance", gameObject);
 	}
 	
 	// Update is called once per frame
