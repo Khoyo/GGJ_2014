@@ -23,8 +23,10 @@ public class CMedecin : MonoBehaviour {
 		if(GetComponent<CEnnemi>().m_bHaveLineOfSight && player.GetComponent<CPlayer>().getState() != CPlayer.EState.e_Charismatique && player.GetComponent<CPlayer>().getState() != CPlayer.EState.e_MauvaisGout)
 			Alert(player);
 
-		foreach(GameObject ass in m_Assistants)
-			Debug.DrawRay(transform.position, ass.transform.position-transform.position, Color.yellow);
+		foreach (GameObject ass in m_Assistants) {
+			if(ass != null)
+				Debug.DrawRay (transform.position, ass.transform.position - transform.position, Color.yellow);
+		}
 	}
 
 	public void Alert(GameObject player){
