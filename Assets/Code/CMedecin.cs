@@ -35,7 +35,8 @@ public class CMedecin : MonoBehaviour {
 
 		GetComponent<NavMeshAgent>().SetDestination(player.transform.position);
 		foreach(GameObject ass in m_Assistants){
-
+			if(ass == null)
+				continue;
 			Vector3 lineOfSight = ass.transform.position-transform.position;
 			RaycastHit hit;
 			Physics.Raycast(new Ray(transform.position, lineOfSight), out hit, lineOfSight.magnitude, ~((1<<8)|(1<<9)));
@@ -45,7 +46,7 @@ public class CMedecin : MonoBehaviour {
 			
 			if(ass.GetComponent<CInfirmier>() != null){
 				ass.GetComponent<CInfirmier>().Alert(player);
-
+		
 			}
 
 			if(ass.GetComponent<CInfirmiere>() != null)
@@ -66,6 +67,6 @@ public class CMedecin : MonoBehaviour {
 	public void Register(GameObject ass){
 		if(ass != gameObject)
 			m_Assistants.Add(ass);
-
 	}
+
 }
