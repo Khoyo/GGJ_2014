@@ -1,6 +1,9 @@
 Event	ID	Name			Wwise Object Path	Notes
+	20067278	Play_ElevatorDepart			\Default Work Unit\Play_ElevatorDepart	
 	81759402	Play_Switch			\Default Work Unit\Play_Switch	
 	434087672	Play_GunFire			\Default Work Unit\Play_GunFire	
+	452547817	Stop_All			\Default Work Unit\Stop_All	
+	1038605896	Play_HospitalAmbiance			\Default Work Unit\Play_HospitalAmbiance	
 	1302282156	Stop_Pisse			\Default Work Unit\Stop_Pisse	
 	1315091481	Play_GunTouch			\Default Work Unit\Play_GunTouch	
 	1558858565	Play_NeonBuzz			\Default Work Unit\Play_NeonBuzz	
@@ -8,10 +11,13 @@ Event	ID	Name			Wwise Object Path	Notes
 	1602358412	Play_footStep			\Default Work Unit\Play_footStep	
 	1700937786	Play_Pisse			\Default Work Unit\Play_Pisse	
 	1909708863	Play_DiePlayer			\Default Work Unit\Play_DiePlayer	
+	2353348466	Stop_HospitalAmbiance			\Default Work Unit\Stop_HospitalAmbiance	
+	2375235217	Play_ElevatorArrive			\Default Work Unit\Play_ElevatorArrive	
 	2830233258	Play_CutMiss			\Default Work Unit\Play_CutMiss	
 	3832649301	Play_CutHit			\Default Work Unit\Play_CutHit	
 	3927559978	Stop_footStep			\Default Work Unit\Stop_footStep	
 	4095338991	Play_BreathEnd			\Default Work Unit\Play_BreathEnd	
+	4143125550	Play_OpenDoor			\Default Work Unit\Play_OpenDoor	
 
 Game Parameter	ID	Name			Wwise Object Path	Notes
 	3502989831	Parameter_PitchFootStep			\Default Work Unit\Parameter_PitchFootStep	
@@ -20,12 +26,16 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	24575237	footStep	C:\Users\APOIL-8\Desktop\Wwise_GGJ2014\GGJ_2014\.cache\Windows\sfx\footstep_23e654fe.wem		\Actor-Mixer Hierarchy\Default Work Unit\footStep		1411264
 	142306988	EndLevel	C:\Users\APOIL-8\Desktop\Wwise_GGJ2014\GGJ_2014\.cache\Windows\sfx\endlevel_ddc98ef4.wem		\Actor-Mixer Hierarchy\Default Work Unit\EndLevel		152156
 	181213917	Gun_Touch	C:\Users\APOIL-8\Desktop\Wwise_GGJ2014\GGJ_2014\.cache\Windows\sfx\gun_touch_ddc98ef4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Gun_Touch		243768
+	191057199	OpenDoor2	C:\Users\APOIL-8\Desktop\Wwise_GGJ2014\GGJ_2014\.cache\Windows\sfx\opendoor2_ddc98ef4.wem		\Actor-Mixer Hierarchy\Default Work Unit\OpenDoor2		33760
+	272742520	Elevator_Arrive	C:\Users\APOIL-8\Desktop\Wwise_GGJ2014\GGJ_2014\.cache\Windows\sfx\elevator_arrive_ddc98ef4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Elevator_Arrive		352864
 	324302801	Cut_Hit	C:\Users\APOIL-8\Desktop\Wwise_GGJ2014\GGJ_2014\.cache\Windows\sfx\cut_hit_ddc98ef4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Cut_Hit		192968
 	383290482	Die_ennemies	C:\Users\APOIL-8\Desktop\Wwise_GGJ2014\GGJ_2014\.cache\Windows\sfx\die_ennemies_ddc98ef4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Die_ennemies		197076
+	643101166	Hospital (Nurses Station_ General	C:\Users\APOIL-8\Desktop\Wwise_GGJ2014\GGJ_2014\.cache\Windows\sfx\hospital (nurses station_ general_f808b7fc.wem		\Actor-Mixer Hierarchy\Default Work Unit\Hospital (Nurses Station_ General		32368288
 	656950511	Gun_Fire	C:\Users\APOIL-8\Desktop\Wwise_GGJ2014\GGJ_2014\.cache\Windows\sfx\gun_fire_ddc98ef4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Gun_Fire		206940
 	706985106	DIePlayer	C:\Users\APOIL-8\Desktop\Wwise_GGJ2014\GGJ_2014\.cache\Windows\sfx\dieplayer_ddc98ef4.wem		\Actor-Mixer Hierarchy\Default Work Unit\DIePlayer		105792
 	716577370	Cut_Miss	C:\Users\APOIL-8\Desktop\Wwise_GGJ2014\GGJ_2014\.cache\Windows\sfx\cut_miss_ddc98ef4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Cut_Miss		192968
 	817489826	NeonBuzz	C:\Users\APOIL-8\Desktop\Wwise_GGJ2014\GGJ_2014\.cache\Windows\sfx\neonbuzz_ddc98ef4.wem		\Actor-Mixer Hierarchy\Default Work Unit\NeonBuzz		264008
 	915730690	Switch	C:\Users\APOIL-8\Desktop\Wwise_GGJ2014\GGJ_2014\.cache\Windows\sfx\switch_ddc98ef4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Switch		688804
+	934710972	Elevator_Start	C:\Users\APOIL-8\Desktop\Wwise_GGJ2014\GGJ_2014\.cache\Windows\sfx\elevator_start_ddc98ef4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Elevator_Start		882064
 	1008380100	pisse	C:\Users\APOIL-8\Desktop\Wwise_GGJ2014\GGJ_2014\.cache\Windows\sfx\pisse_f8e74a04.wem		\Actor-Mixer Hierarchy\Default Work Unit\pisse		5180644
 

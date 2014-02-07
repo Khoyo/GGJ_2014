@@ -18,8 +18,7 @@ public class CPlayer : MonoBehaviour
 	EState m_eState;
 	EState m_eStateToGo;
 
-	float m_fStartingLevel;
-	float m_fStartingLevelMax = 1.0f;
+
 	float m_fVelocityWalk = 15.0f;
 	float m_fVelocityRun;
 	float m_fVelocityRotation = 0.2f;
@@ -86,12 +85,6 @@ public class CPlayer : MonoBehaviour
 		gameObject.transform.FindChild("Head").FindChild("light").gameObject.SetActive(false);
 		StopPisse();
 
-		m_fStartingLevel = 0.0f;
-		if (CGame.m_bStartWithElevator) 
-		{
-			m_fStartingLevel = m_fStartingLevelMax;
-		}
-
 		foreach(AnimationState anim in m_Couteau.animation)
 		{
 			//anim.wrapMode = WrapMode.Once;
@@ -156,10 +149,6 @@ public class CPlayer : MonoBehaviour
 				}
 			}
 		}
-		if(m_fStartingLevel >= 0.0f) 
-		{
-			m_fStartingLevel -= Time.deltaTime;
-		}
 
 		if(m_bIsInSwitch)
 		{
@@ -185,13 +174,6 @@ public class CPlayer : MonoBehaviour
 		{
 			float fPosY = CApoilMath.InterpolationLinear(m_fTimerSwitch, 0.0f, m_fTimerSwitchMax, 0.0f, 3.14159f);
 			GUI.color = new Color(1.0f, 1.0f, 1.0f, Mathf.Sqrt( Mathf.Sin(fPosY)));
-			GUI.DrawTexture(new Rect(0, 0, CGame.m_fWidth, CGame.m_fHeight),  m_TextureBlack);
-		}
-
-		if(m_fStartingLevel >= 0.0f) 
-		{
-			float fPosY = CApoilMath.InterpolationLinear(m_fStartingLevel, 0.0f, m_fStartingLevelMax, 0.0f, 1.0f);
-			GUI.color = new Color(1.0f, 1.0f, 1.0f, Mathf.Sqrt( fPosY));
 			GUI.DrawTexture(new Rect(0, 0, CGame.m_fWidth, CGame.m_fHeight),  m_TextureBlack);
 		}
 	}

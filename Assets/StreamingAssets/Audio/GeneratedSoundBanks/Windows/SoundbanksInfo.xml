@@ -3,7 +3,7 @@
 	<RootPaths>
 		<ProjectRoot>C:\Users\APOIL-8\Desktop\Wwise_GGJ2014\GGJ_2014\</ProjectRoot>
 		<SourceFilesRoot>C:\Users\APOIL-8\Desktop\Wwise_GGJ2014\GGJ_2014\.cache\Windows\</SourceFilesRoot>
-		<SoundBanksRoot>C:\Users\APOIL-8\Desktop\Wwise_GGJ2014\GGJ_2014\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<SoundBanksRoot>C:\Users\APOIL-8\Documents\GitHub\GGJ_2014\Assets\StreamingAssets\Audio\GeneratedSoundBanks\Windows\</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
 		<ExternalSourcesOutputRoot>C:\Users\APOIL-8\Desktop\Wwise_GGJ2014\GGJ_2014\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
 	</RootPaths>
@@ -28,14 +28,20 @@
 				<Event Id="3832649301" Name="Play_CutHit" />
 				<Event Id="2830233258" Name="Play_CutMiss" />
 				<Event Id="1909708863" Name="Play_DiePlayer" />
+				<Event Id="2375235217" Name="Play_ElevatorArrive" />
+				<Event Id="20067278" Name="Play_ElevatorDepart" />
 				<Event Id="1602358412" Name="Play_footStep" />
 				<Event Id="434087672" Name="Play_GunFire" />
 				<Event Id="1315091481" Name="Play_GunTouch" />
+				<Event Id="1038605896" Name="Play_HospitalAmbiance" />
 				<Event Id="1558858565" Name="Play_NeonBuzz" />
+				<Event Id="4143125550" Name="Play_OpenDoor" />
 				<Event Id="1700937786" Name="Play_Pisse" />
 				<Event Id="81759402" Name="Play_Switch" />
 				<Event Id="1583215645" Name="Play_WilhelmScream" />
+				<Event Id="452547817" Name="Stop_All" />
 				<Event Id="3927559978" Name="Stop_footStep" />
+				<Event Id="2353348466" Name="Stop_HospitalAmbiance" />
 				<Event Id="1302282156" Name="Stop_Pisse" />
 			</IncludedEvents>
 			<IncludedDialogueEvents />
@@ -57,6 +63,14 @@
 					<ShortName>DIePlayer.wav</ShortName>
 					<Path>sfx\dieplayer_ddc98ef4.wem</Path>
 				</File>
+				<File Id="272742520" Language="SFX">
+					<ShortName>Elevator_Arrive.wav</ShortName>
+					<Path>sfx\elevator_arrive_ddc98ef4.wem</Path>
+				</File>
+				<File Id="934710972" Language="SFX">
+					<ShortName>Elevator_Start.wav</ShortName>
+					<Path>sfx\elevator_start_ddc98ef4.wem</Path>
+				</File>
 				<File Id="142306988" Language="SFX">
 					<ShortName>EndLevel.wav</ShortName>
 					<Path>sfx\endlevel_ddc98ef4.wem</Path>
@@ -73,9 +87,17 @@
 					<ShortName>Gun_Touch.wav</ShortName>
 					<Path>sfx\gun_touch_ddc98ef4.wem</Path>
 				</File>
+				<File Id="643101166" Language="SFX">
+					<ShortName>Hospital (Nurses Station_ General.wav</ShortName>
+					<Path>sfx\hospital (nurses station_ general_f808b7fc.wem</Path>
+				</File>
 				<File Id="817489826" Language="SFX">
 					<ShortName>NeonBuzz.wav</ShortName>
 					<Path>sfx\neonbuzz_ddc98ef4.wem</Path>
+				</File>
+				<File Id="191057199" Language="SFX">
+					<ShortName>OpenDoor2.wav</ShortName>
+					<Path>sfx\opendoor2_ddc98ef4.wem</Path>
 				</File>
 				<File Id="1008380100" Language="SFX">
 					<ShortName>pisse.wav</ShortName>
