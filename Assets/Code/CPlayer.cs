@@ -179,6 +179,8 @@ public class CPlayer : MonoBehaviour
 					break;
 				}
 			}
+			if(m_eState != EState.e_Bourin)
+				gameObject.transform.FindChild ("Head").FindChild ("light").gameObject.SetActive (false);
 		}
 
 		if(m_bIsInSwitch)
