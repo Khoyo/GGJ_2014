@@ -34,6 +34,7 @@
 				<Event Id="434087672" Name="Play_GunFire" />
 				<Event Id="1315091481" Name="Play_GunTouch" />
 				<Event Id="1558858565" Name="Play_NeonBuzz" />
+				<Event Id="4143125550" Name="Play_OpenDoor" />
 				<Event Id="1700937786" Name="Play_Pisse" />
 				<Event Id="81759402" Name="Play_Switch" />
 				<Event Id="1583215645" Name="Play_WilhelmScream" />
@@ -87,6 +88,10 @@
 				<File Id="817489826" Language="SFX">
 					<ShortName>NeonBuzz.wav</ShortName>
 					<Path>sfx\neonbuzz_ddc98ef4.wem</Path>
+				</File>
+				<File Id="191057199" Language="SFX">
+					<ShortName>OpenDoor2.wav</ShortName>
+					<Path>sfx\opendoor2_ddc98ef4.wem</Path>
 				</File>
 				<File Id="1008380100" Language="SFX">
 					<ShortName>pisse.wav</ShortName>

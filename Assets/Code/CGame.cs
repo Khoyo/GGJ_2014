@@ -75,11 +75,9 @@ public class CGame : MonoBehaviour
 
 	void OnGUI()
 	{
-		Debug.Log(m_fTimerEndLevel / m_fTimerEndLevelMax);
-
 		if(m_bStartLevel) 
 		{
-			GUI.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+			GUI.color = new Color(1.0f, 1.0f, 1.0f, m_fStartingLevel / m_fStartingLevelMax);
 			GUI.DrawTexture(new Rect(0, 0, CGame.m_fWidth, CGame.m_fHeight),  CGame.m_TextureBlack);
 
 		}
@@ -104,6 +102,8 @@ public class CGame : MonoBehaviour
 		{
 			CSoundEngine.postEvent("Stop_All", null);
 			m_bStartLevel = true;
+			m_fTimerEndLevel = m_fTimerEndLevelMax;
+			m_fStartingLevel = m_fStartingLevelMax;
 			Application.LoadLevel(Application.loadedLevel+1);
 
 		}

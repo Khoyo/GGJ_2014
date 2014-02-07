@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class CPorteTrigger : MonoBehaviour {
@@ -40,6 +40,8 @@ public class CPorteTrigger : MonoBehaviour {
 		if(!open && col.name == "Player"){
 			open = true;
 			transform.parent.GetComponent<Animation>().Play();
+			if(gameObject.transform.parent.GetComponent<CPorte>() != null)
+				gameObject.transform.parent.GetComponent<CPorte>().Open();
 		}
 	}
 

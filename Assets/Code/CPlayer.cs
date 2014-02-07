@@ -18,8 +18,7 @@ public class CPlayer : MonoBehaviour
 	EState m_eState;
 	EState m_eStateToGo;
 
-	float m_fStartingLevel;
-	float m_fStartingLevelMax = 1.0f;
+
 	float m_fVelocityWalk = 15.0f;
 	float m_fVelocityRun;
 	float m_fVelocityRotation = 0.2f;
@@ -86,12 +85,6 @@ public class CPlayer : MonoBehaviour
 		gameObject.transform.FindChild("Head").FindChild("light").gameObject.SetActive(false);
 		StopPisse();
 
-		m_fStartingLevel = 0.0f;
-		if (CGame.m_bStartWithElevator) 
-		{
-			m_fStartingLevel = m_fStartingLevelMax;
-		}
-
 		foreach(AnimationState anim in m_Couteau.animation)
 		{
 			//anim.wrapMode = WrapMode.Once;
@@ -155,10 +148,6 @@ public class CPlayer : MonoBehaviour
 					break;
 				}
 			}
-		}
-		if(m_fStartingLevel >= 0.0f) 
-		{
-			m_fStartingLevel -= Time.deltaTime;
 		}
 
 		if(m_bIsInSwitch)
