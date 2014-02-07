@@ -15,14 +15,39 @@ public class CPlayer : MonoBehaviour
 		e_MauvaisGout,
 	}
 
+	public float walkSpeed = 15.0f;
+	public float runSpeed = 20.0f;
+	public bool limitDiagonalSpeed = true;
+	public bool toggleRun = false;
+	public float jumpSpeed = 8.0f;
+	public float gravity = 20.0f;
+	public float fallingDamageThreshold = 10.0f;
+	public bool slideWhenOverSlopeLimit = false;
+	public bool slideOnTaggedObjects = false;
+	public float slideSpeed = 12.0f;
+	public bool airControl = true;
+	public float antiBumpFactor = .75f;
+	public int antiBunnyHopFactor = 1;
+	
+	private Vector3 moveDirection = Vector3.zero;
+	private bool grounded = false;
+	private CharacterController controller;
+	private Transform myTransform;
+	private float speed;
+	private RaycastHit hit;
+	private float fallStartLevel;
+	private bool falling;
+	private float slideLimit;
+	private float rayDistance;
+	private Vector3 contactPoint;
+	private bool playerControl = false;
+	private int jumpTimer;
+
 	EState m_eState;
 	EState m_eStateToGo;
 
 
-	float m_fVelocityWalk = 15.0f;
-	float m_fVelocityRun;
 	float m_fVelocityRotation = 0.2f;
-	float m_fVelocityJump = 8.0f;
 	float m_fAngleY;
 	float m_fTimerGateling;
 	float m_fCadenceGateling = 1/10.0f;
@@ -59,8 +84,14 @@ public class CPlayer : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
+		controller = GetComponent<CharacterController>();
+		myTransform = transform;
+		speed = walkSpeed;
+		rayDistance = controller.height * .5f + controller.radius;
+		slideLimit = controller.slopeLimit - .1f;
+		jumpTimer = antiBunnyHopFactor;
+
 		m_fAngleY = 0.0f;
-		m_fVelocityRun = 1.0f;
 		m_fTimerGateling = 0.0f;
 		m_fTimerSwitch = 0.0f;
 		m_fTimerPisse = 0.0f;
@@ -98,12 +129,12 @@ public class CPlayer : MonoBehaviour
 	{
 		if (!m_bIsInSwitch /*&& m_fStartingLevel <= 0.0f*/) 
 		{
-			if (!m_bIsOnLadder)
-				Move ();
-			else 
+			if (m_bIsOnLadder)
 			{
 				MoveOnLadder ();
 			}
+			else
+				SoundFootStep();
 			MoveHead ();
 			InputsPlayer ();
 
@@ -159,6 +190,25 @@ public class CPlayer : MonoBehaviour
 			m_fCoeffVelocityGateling -= Time.deltaTime;
 		else
 			m_fCoeffVelocityGateling = 0.0f;
+
+		if (toggleRun && grounded && Input.GetButtonDown("Run"))
+			speed = (speed == walkSpeed? runSpeed : walkSpeed);
+	}
+
+	void FixedUpdate(){
+		if (!m_bIsOnLadder && !m_bIsInSwitch)
+			Move ();
+	}
+
+	// Store point that we're in contact with for use in FixedUpdate if needed
+	void OnControllerColliderHit (ControllerColliderHit hit) {
+		contactPoint = hit.point;
+	}
+	
+	// If falling damage occured, this is the place to do something about it. You can make the player
+	// have hitpoints and remove some of them based on the distance fallen, add sound effects, etc.
+	void FallingDamageAlert (float fallDistance) {
+		print ("Ouch! Fell " + fallDistance + " units!");   
 	}
 
 	void OnGUI()
@@ -183,12 +233,13 @@ public class CPlayer : MonoBehaviour
 		GUI.Label(new Rect(10, 10, 100, 20), System.Convert.ToString(m_eState));
 	}
 
+	/*
 	void Move()
 	{
 		float fAngleX = gameObject.transform.rotation.eulerAngles.y * 2*3.14f/360.0f;
 		/*Vector3 vForward = new Vector3(Mathf.Sin(fAngleX),0, Mathf.Cos(fAngleX));
 		Vector3 vRight = new Vector3(Mathf.Sin(fAngleX + 3.14f/2.0f),0, Mathf.Cos(fAngleX + 3.14f/2.0f));
-		*/
+		*//*
 		CharacterController controller = GetComponent<CharacterController>();
 
 		float vspeed = vMoveDirection.y;
@@ -216,8 +267,87 @@ public class CPlayer : MonoBehaviour
 		gameObject.transform.RotateAround(new Vector3(0,1,0),m_fVelocityRotation * CApoilInput.InputPlayer.MouseAngleX);
 
 		SoundFootStep();
+	}*/
+
+
+	void Move(){
+		float inputX = Input.GetAxis("Horizontal");
+		float inputY = Input.GetAxis("Vertical");
+		// If both horizontal and vertical are used simultaneously, limit speed (if allowed), so the total doesn't exceed normal move speed
+		float inputModifyFactor = (inputX != 0.0f && inputY != 0.0f && limitDiagonalSpeed)? .7071f : 1.0f;
+		
+		if (grounded) {
+			bool sliding = false;
+			// See if surface immediately below should be slid down. We use this normally rather than a ControllerColliderHit point,
+			// because that interferes with step climbing amongst other annoyances
+			if (Physics.Raycast(myTransform.position, -Vector3.up, out hit, rayDistance)) {
+				if (Vector3.Angle(hit.normal, Vector3.up) > slideLimit)
+					sliding = true;
+			}
+			// However, just raycasting straight down from the center can fail when on steep slopes
+			// So if the above raycast didn't catch anything, raycast down from the stored ControllerColliderHit point instead
+			else {
+				Physics.Raycast(contactPoint + Vector3.up, -Vector3.up, out hit);
+				if (Vector3.Angle(hit.normal, Vector3.up) > slideLimit)
+					sliding = true;
+			}
+			
+			// If we were falling, and we fell a vertical distance greater than the threshold, run a falling damage routine
+			if (falling) {
+				falling = false;
+				if (myTransform.position.y < fallStartLevel - fallingDamageThreshold)
+					FallingDamageAlert (fallStartLevel - myTransform.position.y);
+			}
+			
+			// If running isn't on a toggle, then use the appropriate speed depending on whether the run button is down
+			if (!toggleRun)
+				speed = CApoilInput.InputPlayer.Run ? runSpeed : walkSpeed;
+			
+			// If sliding (and it's allowed), or if we're on an object tagged "Slide", get a vector pointing down the slope we're on
+			if ( (sliding && slideWhenOverSlopeLimit) || (slideOnTaggedObjects && hit.collider.tag == "Slide") ) {
+				Vector3 hitNormal = hit.normal;
+				moveDirection = new Vector3(hitNormal.x, -hitNormal.y, hitNormal.z);
+				Vector3.OrthoNormalize (ref hitNormal, ref moveDirection);
+				moveDirection *= slideSpeed;
+				playerControl = false;
+			}
+			// Otherwise recalculate moveDirection directly from axes, adding a bit of -y to avoid bumping down inclines
+			else {
+				moveDirection = new Vector3(inputX * inputModifyFactor, -antiBumpFactor, inputY * inputModifyFactor);
+				moveDirection = myTransform.TransformDirection(moveDirection) * speed;
+				playerControl = true;
+			}
+			
+			// Jump! But only if the jump button has been released and player has been grounded for a given number of frames
+			if (!Input.GetButton("Jump"))
+				jumpTimer++;
+			else if (jumpTimer >= antiBunnyHopFactor) {
+				moveDirection.y = jumpSpeed;
+				jumpTimer = 0;
+			}
+		}
+		else {
+			// If we stepped over a cliff or something, set the height at which we started falling
+			if (!falling) {
+				falling = true;
+				fallStartLevel = myTransform.position.y;
+			}
+			
+			// If air control is allowed, check movement but don't touch the y component
+			if (airControl && playerControl) {
+				moveDirection.x = inputX * speed * inputModifyFactor;
+				moveDirection.z = inputY * speed * inputModifyFactor;
+				moveDirection = myTransform.TransformDirection(moveDirection);
+			}
+		}
+		
+		// Apply gravity
+		moveDirection.y -= gravity * Time.deltaTime;
+		
+		// Move the controller, and set grounded true or false depending on whether we're standing on something
+		grounded = (controller.Move(moveDirection * Time.deltaTime) & CollisionFlags.Below) != 0;
 	}
-	
+
 	void MoveHead()
 	{
 		float fAngleMax = -4.0f;
@@ -231,6 +361,7 @@ public class CPlayer : MonoBehaviour
 		else if(m_fAngleY > fAngleMin)
 			m_fAngleY = fAngleMin;
 		
+		gameObject.transform.RotateAround(new Vector3(0,1,0),m_fVelocityRotation * CApoilInput.InputPlayer.MouseAngleX);
 		gameObject.transform.FindChild("Head").RotateAroundLocal(new Vector3(1,0,0), m_fVelocityRotation * (m_fAngleY - fAngleBeforeY));
 	}
 
@@ -314,13 +445,7 @@ public class CPlayer : MonoBehaviour
 			m_bSneak = false;
 		}
 
-		if(CApoilInput.InputPlayer.Run && m_bCanRun)
-		{
-			m_fVelocityRun = 2.0f;
-		}
-		else
-			m_fVelocityRun = 1.0f;
-
+		
 	}
 
 	public void GoToStateFurtif()
