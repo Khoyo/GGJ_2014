@@ -187,13 +187,6 @@ public class CPlayer : MonoBehaviour
 			GUI.color = new Color(1.0f, 1.0f, 1.0f, Mathf.Sqrt( Mathf.Sin(fPosY)));
 			GUI.DrawTexture(new Rect(0, 0, CGame.m_fWidth, CGame.m_fHeight),  m_TextureBlack);
 		}
-
-		if(m_fStartingLevel >= 0.0f) 
-		{
-			float fPosY = CApoilMath.InterpolationLinear(m_fStartingLevel, 0.0f, m_fStartingLevelMax, 0.0f, 1.0f);
-			GUI.color = new Color(1.0f, 1.0f, 1.0f, Mathf.Sqrt( fPosY));
-			GUI.DrawTexture(new Rect(0, 0, CGame.m_fWidth, CGame.m_fHeight),  m_TextureBlack);
-		}
 	}
 
 	void DisplayDebug()

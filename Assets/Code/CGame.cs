@@ -13,6 +13,14 @@ public class CGame : MonoBehaviour
 	public static bool m_bLevelFixeSansSwitch;
 	public bool LD_CeLevelCommenceParUnAscenseur;
 	public static bool m_bStartWithElevator;
+	static bool m_bEndLevel;
+	static bool m_bStartLevel;
+	float m_fTimerEndLevel;
+	float m_fTimerEndLevelMax = 5.0f;
+	float m_fStartingLevel;
+	float m_fStartingLevelMax = 1.0f;
+	static Texture m_TextureBlack;
+
 	
 	public bool isInitialized = false;
 	public int tmp;
@@ -23,6 +31,11 @@ public class CGame : MonoBehaviour
 		CApoilInput.Init();
 		CSoundEngine.Init();
 		CSoundEngine.LoadBank(soundbankName);
+		m_fTimerEndLevel = m_fTimerEndLevelMax;
+		m_fStartingLevel = m_fStartingLevelMax;
+		m_bEndLevel = false;
+		m_bStartLevel = true;
+		CGame.m_TextureBlack = GameObject.Find("Player").GetComponent<CPlayer>().m_TextureBlack;
 	}
 	
 	// Update is called once per frame
@@ -35,14 +48,64 @@ public class CGame : MonoBehaviour
 
 		if(CApoilInput.DebugF10)
 			GoToNextLevel();
+
+		if(m_bStartLevel)
+		{
+			if(m_fStartingLevel > 0)
+			{
+				m_fStartingLevel -= Time.deltaTime;
+			}
+			else
+				m_bStartLevel = false;
+		}
+
+		if(m_bEndLevel)
+		{
+			if(m_fTimerEndLevel > 0)
+			{
+				m_fTimerEndLevel -= Time.deltaTime;
+			}
+			else
+			{
+				GoToNextLevel();
+				m_bEndLevel = false;
+			}
+		}
 	}
 
-	public static void GoToNextLevel()
+	void OnGUI()
+	{
+		Debug.Log(m_fTimerEndLevel / m_fTimerEndLevelMax);
+
+		if(m_bStartLevel) 
+		{
+			GUI.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+			GUI.DrawTexture(new Rect(0, 0, CGame.m_fWidth, CGame.m_fHeight),  CGame.m_TextureBlack);
+
+		}
+
+		if(m_bEndLevel)
+		{
+			GUI.color = new Color(1.0f, 1.0f, 1.0f, 1.0f - m_fTimerEndLevel / m_fTimerEndLevelMax);
+			GUI.DrawTexture(new Rect(0, 0, CGame.m_fWidth, CGame.m_fHeight),  CGame.m_TextureBlack);
+		}
+	}
+
+	public static void TakeElevator()
+	{
+		CSoundEngine.postEvent("Play_BreathEnd", null);
+		CGame.m_bEndLevel = true; 
+
+	}
+
+	void GoToNextLevel()
 	{
 		if(Application.loadedLevel < Application.levelCount)
 		{
-			CSoundEngine.postEvent("Play_BreathEnd", null);
+			CSoundEngine.postEvent("Stop_All", null);
+			m_bStartLevel = true;
 			Application.LoadLevel(Application.loadedLevel+1);
+
 		}
 	}
 }

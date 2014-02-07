@@ -3,7 +3,7 @@
 	<RootPaths>
 		<ProjectRoot>C:\Users\APOIL-8\Desktop\Wwise_GGJ2014\GGJ_2014\</ProjectRoot>
 		<SourceFilesRoot>C:\Users\APOIL-8\Desktop\Wwise_GGJ2014\GGJ_2014\.cache\Windows\</SourceFilesRoot>
-		<SoundBanksRoot>C:\Users\APOIL-8\Desktop\Wwise_GGJ2014\GGJ_2014\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<SoundBanksRoot>C:\Users\APOIL-8\Documents\GitHub\GGJ_2014\Assets\StreamingAssets\Audio\GeneratedSoundBanks\Windows\</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
 		<ExternalSourcesOutputRoot>C:\Users\APOIL-8\Desktop\Wwise_GGJ2014\GGJ_2014\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
 	</RootPaths>
@@ -28,6 +28,8 @@
 				<Event Id="3832649301" Name="Play_CutHit" />
 				<Event Id="2830233258" Name="Play_CutMiss" />
 				<Event Id="1909708863" Name="Play_DiePlayer" />
+				<Event Id="2375235217" Name="Play_ElevatorArrive" />
+				<Event Id="20067278" Name="Play_ElevatorDepart" />
 				<Event Id="1602358412" Name="Play_footStep" />
 				<Event Id="434087672" Name="Play_GunFire" />
 				<Event Id="1315091481" Name="Play_GunTouch" />
@@ -35,6 +37,7 @@
 				<Event Id="1700937786" Name="Play_Pisse" />
 				<Event Id="81759402" Name="Play_Switch" />
 				<Event Id="1583215645" Name="Play_WilhelmScream" />
+				<Event Id="452547817" Name="Stop_All" />
 				<Event Id="3927559978" Name="Stop_footStep" />
 				<Event Id="1302282156" Name="Stop_Pisse" />
 			</IncludedEvents>
@@ -56,6 +59,14 @@
 				<File Id="706985106" Language="SFX">
 					<ShortName>DIePlayer.wav</ShortName>
 					<Path>sfx\dieplayer_ddc98ef4.wem</Path>
+				</File>
+				<File Id="272742520" Language="SFX">
+					<ShortName>Elevator_Arrive.wav</ShortName>
+					<Path>sfx\elevator_arrive_ddc98ef4.wem</Path>
+				</File>
+				<File Id="934710972" Language="SFX">
+					<ShortName>Elevator_Start.wav</ShortName>
+					<Path>sfx\elevator_start_ddc98ef4.wem</Path>
 				</File>
 				<File Id="142306988" Language="SFX">
 					<ShortName>EndLevel.wav</ShortName>
