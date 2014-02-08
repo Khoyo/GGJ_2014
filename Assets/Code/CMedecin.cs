@@ -23,8 +23,10 @@ public class CMedecin : MonoBehaviour {
 		if(GetComponent<CEnnemi>().m_bHaveLineOfSight && player.GetComponent<CPlayer>().getState() != CPlayer.EState.e_Charismatique && player.GetComponent<CPlayer>().getState() != CPlayer.EState.e_MauvaisGout)
 			Alert(player);
 
-		foreach(GameObject ass in m_Assistants)
-			Debug.DrawRay(transform.position, ass.transform.position-transform.position, Color.yellow);
+		foreach (GameObject ass in m_Assistants) {
+			if(ass != null)
+				Debug.DrawRay (transform.position, ass.transform.position - transform.position, Color.yellow);
+		}
 	}
 
 	public void Alert(GameObject player){
@@ -35,7 +37,8 @@ public class CMedecin : MonoBehaviour {
 
 		GetComponent<NavMeshAgent>().SetDestination(player.transform.position);
 		foreach(GameObject ass in m_Assistants){
-
+			if(ass == null)
+				continue;
 			Vector3 lineOfSight = ass.transform.position-transform.position;
 			RaycastHit hit;
 			Physics.Raycast(new Ray(transform.position, lineOfSight), out hit, lineOfSight.magnitude, ~((1<<8)|(1<<9)));
@@ -45,7 +48,7 @@ public class CMedecin : MonoBehaviour {
 			
 			if(ass.GetComponent<CInfirmier>() != null){
 				ass.GetComponent<CInfirmier>().Alert(player);
-
+		
 			}
 
 			if(ass.GetComponent<CInfirmiere>() != null)
@@ -66,6 +69,6 @@ public class CMedecin : MonoBehaviour {
 	public void Register(GameObject ass){
 		if(ass != gameObject)
 			m_Assistants.Add(ass);
-
 	}
+
 }
