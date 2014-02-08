@@ -27,6 +27,10 @@
 				<Event Id="4095338991" Name="Play_BreathEnd" />
 				<Event Id="3832649301" Name="Play_CutHit" />
 				<Event Id="2830233258" Name="Play_CutMiss" />
+				<Event Id="3362196773" Name="Play_DialBourin" />
+				<Event Id="4035489312" Name="Play_DialFurtif" />
+				<Event Id="2273414070" Name="Play_DialGirl" />
+				<Event Id="584383853" Name="Play_DialMauvaisGout" />
 				<Event Id="1909708863" Name="Play_DiePlayer" />
 				<Event Id="2375235217" Name="Play_ElevatorArrive" />
 				<Event Id="20067278" Name="Play_ElevatorDepart" />
@@ -54,6 +58,22 @@
 				<File Id="716577370" Language="SFX">
 					<ShortName>Cut_Miss.wav</ShortName>
 					<Path>sfx\cut_miss_ddc98ef4.wem</Path>
+				</File>
+				<File Id="118973017" Language="SFX">
+					<ShortName>Dial_Bourin.wav</ShortName>
+					<Path>sfx\dial_bourin_ddc98ef4.wem</Path>
+				</File>
+				<File Id="852920427" Language="SFX">
+					<ShortName>Dial_Furtif.wav</ShortName>
+					<Path>sfx\dial_furtif_ddc98ef4.wem</Path>
+				</File>
+				<File Id="636972074" Language="SFX">
+					<ShortName>Dial_Girl.wav</ShortName>
+					<Path>sfx\dial_girl_ddc98ef4.wem</Path>
+				</File>
+				<File Id="314399920" Language="SFX">
+					<ShortName>Dial_MauvaisGout.wav</ShortName>
+					<Path>sfx\dial_mauvaisgout_ddc98ef4.wem</Path>
 				</File>
 				<File Id="383290482" Language="SFX">
 					<ShortName>Die_ennemies.wav</ShortName>

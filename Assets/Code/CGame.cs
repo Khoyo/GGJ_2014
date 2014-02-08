@@ -9,10 +9,11 @@ public class CGame : MonoBehaviour
 	public static bool m_bDebug;
 	public static int m_fWidth = 1280;
 	public static int m_fHeight = 720;
-	public bool LD_LevelFixeSansSwitch;
 	public static bool m_bLevelFixeSansSwitch;
-	public bool LD_CeLevelCommenceParUnAscenseur;
 	public static bool m_bStartWithElevator;
+	public static Font m_FontLarge;
+	public static float m_fTimerSwitchMax = 3.0f;
+
 	static bool m_bEndLevel;
 	static bool m_bStartLevel;
 	float m_fTimerEndLevel;
@@ -20,8 +21,7 @@ public class CGame : MonoBehaviour
 	float m_fStartingLevel;
 	float m_fStartingLevelMax = 1.0f;
 	static Texture m_TextureBlack;
-
-	
+		
 	public bool isInitialized = false;
 	public int tmp;
 

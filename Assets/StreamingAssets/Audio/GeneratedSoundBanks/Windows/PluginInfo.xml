@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PluginInfo Project="GGJ_2014" Platform="Windows" Key="F9DA8435-4" Motion="false">
-	<Plugins />
+<PluginInfo Project="GGJ_2014" Platform="Windows" Key=" CC8FBEB-4" Motion="false">
+	<Plugins>
+		<Plugin Name="Wwise Compressor" ID="7077891" />
+	</Plugins>
 </PluginInfo>

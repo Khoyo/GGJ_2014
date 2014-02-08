@@ -3774,6 +3774,7 @@ MonoBehaviour:
   Bourin: 0
   Charismatique: 1
   MauvaisGout: 0
+  m_Text: Holy shit, what's going on ?
 --- !u!65 &334709210
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9893,6 +9894,79 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47caa2e47362a044e84625d47eda6f8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &825710810
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100000, guid: 9e1aac343b69d1b488d2aeead61c3abe, type: 2}
+  m_PrefabInternal: {fileID: 1379860011}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 825710814}
+  - 33: {fileID: 825710813}
+  - 64: {fileID: 825710812}
+  - 23: {fileID: 825710811}
+  m_Layer: 0
+  m_Name: Wall_Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!23 &825710811
+Renderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 2300000, guid: 9e1aac343b69d1b488d2aeead61c3abe,
+    type: 2}
+  m_PrefabInternal: {fileID: 1379860011}
+  m_GameObject: {fileID: 825710810}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: 96452493ebef6a64780eca97478382ec, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
+--- !u!64 &825710812
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6400000, guid: 9e1aac343b69d1b488d2aeead61c3abe,
+    type: 2}
+  m_PrefabInternal: {fileID: 1379860011}
+  m_GameObject: {fileID: 825710810}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!33 &825710813
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 3300000, guid: 9e1aac343b69d1b488d2aeead61c3abe,
+    type: 2}
+  m_PrefabInternal: {fileID: 1379860011}
+  m_GameObject: {fileID: 825710810}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &825710814
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400000, guid: 9e1aac343b69d1b488d2aeead61c3abe, type: 2}
+  m_PrefabInternal: {fileID: 1379860011}
+  m_GameObject: {fileID: 825710810}
+  m_LocalRotation: {x: .49042663, y: .509393454, z: -.490478933, w: .509343207}
+  m_LocalPosition: {x: -38.6586227, y: 2.14218712, z: 41.6199379}
+  m_LocalScale: {x: .300000012, y: .300000012, z: .300000042}
+  m_Children: []
+  m_Father: {fileID: 0}
 --- !u!1 &855056478
 GameObject:
   m_ObjectHideFlags: 0
@@ -9998,6 +10072,10 @@ Prefab:
     - target: {fileID: 11400000, guid: c28cca074897f5c4eadf1dc8bf6b05fa, type: 2}
       propertyPath: Charismatique
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: c28cca074897f5c4eadf1dc8bf6b05fa, type: 2}
+      propertyPath: m_Text
+      value: Holy shit, what's going on ?
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c28cca074897f5c4eadf1dc8bf6b05fa, type: 2}
@@ -11921,6 +11999,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: .690150023
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: c28cca074897f5c4eadf1dc8bf6b05fa, type: 2}
+      propertyPath: m_Text
+      value: Let's rock!
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c28cca074897f5c4eadf1dc8bf6b05fa, type: 2}
   m_RootGameObject: {fileID: 1185006734}
@@ -12598,6 +12680,7 @@ MonoBehaviour:
   Bourin: 0
   Charismatique: 0
   MauvaisGout: 0
+  m_Text: Oh men, my personality is switching again !
 --- !u!65 &1090371231
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12924,6 +13007,7 @@ MonoBehaviour:
   LD_CeLevelCommenceParUnAscenseur: 0
   LD_LevelFixeSansSwitch: 1
   LD_bDebug: 0
+  LD_FontLarge: {fileID: 12800000, guid: 7c750d9a51b8c534b96cd9cd483b4715, type: 3}
 --- !u!4 &1175723469
 Transform:
   m_ObjectHideFlags: 0
@@ -13057,6 +13141,7 @@ MonoBehaviour:
   Bourin: 1
   Charismatique: 0
   MauvaisGout: 0
+  m_Text: Let's rock!
 --- !u!65 &1185006736
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14767,6 +14852,10 @@ Prefab:
       propertyPath: Furtif
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: c28cca074897f5c4eadf1dc8bf6b05fa, type: 2}
+      propertyPath: m_Text
+      value: Oh men, my personality is switching again !
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c28cca074897f5c4eadf1dc8bf6b05fa, type: 2}
   m_RootGameObject: {fileID: 1090371229}
@@ -15507,6 +15596,46 @@ MeshFilter:
   m_PrefabInternal: {fileID: 776131781}
   m_GameObject: {fileID: 1375190845}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &1379860011
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 9e1aac343b69d1b488d2aeead61c3abe, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -38.6586227
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 9e1aac343b69d1b488d2aeead61c3abe, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2.14218712
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 9e1aac343b69d1b488d2aeead61c3abe, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 41.6199379
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 9e1aac343b69d1b488d2aeead61c3abe, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: .49042663
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 9e1aac343b69d1b488d2aeead61c3abe, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: .509393454
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 9e1aac343b69d1b488d2aeead61c3abe, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -.490478933
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 9e1aac343b69d1b488d2aeead61c3abe, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: .509343207
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 9e1aac343b69d1b488d2aeead61c3abe, type: 2}
+  m_RootGameObject: {fileID: 825710810}
+  m_IsPrefabParent: 0
+  m_IsExploded: 1
 --- !u!1 &1386963568
 GameObject:
   m_ObjectHideFlags: 0
@@ -18084,6 +18213,11 @@ Prefab:
       propertyPath: LD_LevelFixeSansSwitch
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 157c715ecddd7e842912a706f4e77f10, type: 2}
+      propertyPath: LD_FontLarge
+      value: 
+      objectReference: {fileID: 12800000, guid: 7c750d9a51b8c534b96cd9cd483b4715,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 157c715ecddd7e842912a706f4e77f10, type: 2}
   m_RootGameObject: {fileID: 1175723467}

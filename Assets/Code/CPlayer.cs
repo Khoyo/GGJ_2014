@@ -34,7 +34,6 @@ public class CPlayer : MonoBehaviour
 	float m_fRadiusCut = 2.0f;
 	float m_fRadiusPisse = 4.0f;
 	float m_fTimerSwitch;
-	float m_fTimerSwitchMax = 3.0f;
 	float m_fTimerStopSoundFootStep;
 	float m_fTimerStopSoundFootStepMax = 0.5f;
 	float m_fParamFootStepVelocity = 0.5f;
@@ -172,7 +171,7 @@ public class CPlayer : MonoBehaviour
 
 		if(m_bIsInSwitch)
 		{
-			float fPosY = CApoilMath.InterpolationLinear(m_fTimerSwitch, 0.0f, m_fTimerSwitchMax, 0.0f, 3.14159f);
+			float fPosY = CApoilMath.InterpolationLinear(m_fTimerSwitch, 0.0f, CGame.m_fTimerSwitchMax, 0.0f, 3.14159f);
 			GUI.color = new Color(1.0f, 1.0f, 1.0f, Mathf.Sqrt( Mathf.Sin(fPosY)));
 			GUI.DrawTexture(new Rect(0, 0, CGame.m_fWidth, CGame.m_fHeight),  m_TextureBlack);
 		}
@@ -326,7 +325,7 @@ public class CPlayer : MonoBehaviour
 	public void GoToStateFurtif()
 	{
 		m_eStateToGo = EState.e_Furtif;
-		m_fTimerSwitch = m_fTimerSwitchMax;
+		m_fTimerSwitch = CGame.m_fTimerSwitchMax;
 		m_bIsInSwitch = true;
 		CSoundEngine.postEvent("Play_Switch", gameObject);
 	}
@@ -334,7 +333,7 @@ public class CPlayer : MonoBehaviour
 	public void GoToStateBourin()
 	{
 		m_eStateToGo = EState.e_Bourin;
-		m_fTimerSwitch = m_fTimerSwitchMax;
+		m_fTimerSwitch = CGame.m_fTimerSwitchMax;
 		m_bIsInSwitch = true;
 		CSoundEngine.postEvent("Play_Switch", gameObject);
 	}
@@ -342,7 +341,7 @@ public class CPlayer : MonoBehaviour
 	public void GoToStateCharismatique()
 	{
 		m_eStateToGo = EState.e_Charismatique;
-		m_fTimerSwitch = m_fTimerSwitchMax;
+		m_fTimerSwitch = CGame.m_fTimerSwitchMax;
 		m_bIsInSwitch = true;
 		CSoundEngine.postEvent("Play_Switch", gameObject);
 	}
@@ -350,7 +349,7 @@ public class CPlayer : MonoBehaviour
 	public void GoToStateMauvaisGout()
 	{
 		m_eStateToGo = EState.e_MauvaisGout;
-		m_fTimerSwitch = m_fTimerSwitchMax;
+		m_fTimerSwitch = CGame.m_fTimerSwitchMax;
 		m_bIsInSwitch = true;
 		CSoundEngine.postEvent("Play_Switch", gameObject);
 	}
@@ -475,7 +474,7 @@ public class CPlayer : MonoBehaviour
 		if(m_fTimerSwitch > 0.0f)
 		{
 			m_fTimerSwitch -= Time.deltaTime;
-			if(m_fTimerSwitch < m_fTimerSwitchMax/2.0f)
+			if(m_fTimerSwitch < CGame.m_fTimerSwitchMax/2.0f)
 			{
 				m_eState = m_eStateToGo;
 				SwitchState();
