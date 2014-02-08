@@ -128,13 +128,6 @@ public class CPlayer : MonoBehaviour
 	{
 		if (!m_bIsInSwitch /*&& m_fStartingLevel <= 0.0f*/) 
 		{
-			if (m_bIsOnLadder)
-			{
-				MoveOnLadder ();
-			}
-			else
-				SoundFootStep();
-			MoveHead ();
 			InputsPlayer ();
 
 			switch (m_eState) {
@@ -196,11 +189,20 @@ public class CPlayer : MonoBehaviour
 			speed = (speed == walkSpeed? runSpeed : walkSpeed);
 	}
 
-	void FixedUpdate(){
-		if (!m_bIsOnLadder && !m_bIsInSwitch)
+	void FixedUpdate()
+	{
+		if (m_bIsOnLadder)
+		{
+			MoveOnLadder ();
+		}
+		else if (!m_bIsInSwitch)
+		{
 			Move ();
+			SoundFootStep();
+			MoveHead ();
+		}
 	}
-
+	
 	// Store point that we're in contact with for use in FixedUpdate if needed
 	void OnControllerColliderHit (ControllerColliderHit hit) {
 		contactPoint = hit.point;
