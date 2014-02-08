@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CGame : MonoBehaviour 
 {
-	string soundbankName = "SoundBank_GGJ2014.bnk";
+	public static string soundbankName = "SoundBank_GGJ2014.bnk";
 
 	public bool LD_bDebug = false;
 	public static bool m_bDebug;
@@ -30,7 +30,7 @@ public class CGame : MonoBehaviour
 	{
 		CApoilInput.Init();
 		CSoundEngine.Init();
-		CSoundEngine.LoadBank(soundbankName);
+		CSoundEngine.LoadBank(CGame.soundbankName);
 		m_fTimerEndLevel = m_fTimerEndLevelMax;
 		m_fStartingLevel = m_fStartingLevelMax;
 		m_bEndLevel = false;

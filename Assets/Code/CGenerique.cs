@@ -31,7 +31,12 @@ public class CGenerique : MonoBehaviour {
 
 		m_fWidth = CGame.m_fWidth;
 		m_fHeight = CGame.m_fHeight;
-		
+
+		CSoundEngine.Init();
+		CSoundEngine.LoadBank(CGame.soundbankName);
+
+		CSoundEngine.postEvent("Play_MusiqueFin", gameObject);
+
 		if(GameObject.Find("_Game") != null)
 			Object.Destroy(GameObject.Find("_Game"));
 	}

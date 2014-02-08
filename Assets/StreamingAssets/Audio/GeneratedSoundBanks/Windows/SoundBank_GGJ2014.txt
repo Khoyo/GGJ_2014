@@ -15,6 +15,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	2273414070	Play_DialGirl			\Default Work Unit\Play_DialGirl	
 	2353348466	Stop_HospitalAmbiance			\Default Work Unit\Stop_HospitalAmbiance	
 	2375235217	Play_ElevatorArrive			\Default Work Unit\Play_ElevatorArrive	
+	2454451202	Play_MusiqueFin			\Default Work Unit\Play_MusiqueFin	
 	2830233258	Play_CutMiss			\Default Work Unit\Play_CutMiss	
 	3362196773	Play_DialBourin			\Default Work Unit\Play_DialBourin	
 	3832649301	Play_CutHit			\Default Work Unit\Play_CutHit	
@@ -33,6 +34,7 @@ Effect plug-ins	ID	Name	Type				Notes
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	24575237	footStep	C:\Users\APOIL-8\Desktop\Wwise_GGJ2014\GGJ_2014\.cache\Windows\sfx\footstep_23e654fe.wem		\Actor-Mixer Hierarchy\Default Work Unit\footStep		1411264
+	98706455	musiqueFin	C:\Users\APOIL-8\Desktop\Wwise_GGJ2014\GGJ_2014\.cache\Windows\sfx\musiquefin_ddc98ef4.wem		\Actor-Mixer Hierarchy\Default Work Unit\musiqueFin		3525624
 	118973017	Dial_Bourin	C:\Users\APOIL-8\Desktop\Wwise_GGJ2014\GGJ_2014\.cache\Windows\sfx\dial_bourin_ddc98ef4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Dial_Bourin		259764
 	142306988	EndLevel	C:\Users\APOIL-8\Desktop\Wwise_GGJ2014\GGJ_2014\.cache\Windows\sfx\endlevel_ddc98ef4.wem		\Actor-Mixer Hierarchy\Default Work Unit\EndLevel		152156
 	181213917	Gun_Touch	C:\Users\APOIL-8\Desktop\Wwise_GGJ2014\GGJ_2014\.cache\Windows\sfx\gun_touch_ddc98ef4.wem		\Actor-Mixer Hierarchy\Default Work Unit\Gun_Touch		243768

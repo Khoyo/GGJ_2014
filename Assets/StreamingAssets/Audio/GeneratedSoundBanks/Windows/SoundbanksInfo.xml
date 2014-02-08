@@ -38,6 +38,7 @@
 				<Event Id="434087672" Name="Play_GunFire" />
 				<Event Id="1315091481" Name="Play_GunTouch" />
 				<Event Id="1038605896" Name="Play_HospitalAmbiance" />
+				<Event Id="2454451202" Name="Play_MusiqueFin" />
 				<Event Id="1558858565" Name="Play_NeonBuzz" />
 				<Event Id="4143125550" Name="Play_OpenDoor" />
 				<Event Id="1700937786" Name="Play_Pisse" />
@@ -110,6 +111,10 @@
 				<File Id="643101166" Language="SFX">
 					<ShortName>Hospital (Nurses Station_ General.wav</ShortName>
 					<Path>sfx\hospital (nurses station_ general_f808b7fc.wem</Path>
+				</File>
+				<File Id="98706455" Language="SFX">
+					<ShortName>musiqueFin.wav</ShortName>
+					<Path>sfx\musiquefin_ddc98ef4.wem</Path>
 				</File>
 				<File Id="817489826" Language="SFX">
 					<ShortName>NeonBuzz.wav</ShortName>
