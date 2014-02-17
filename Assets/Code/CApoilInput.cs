@@ -66,11 +66,11 @@ public class CApoilInput
 		
 		Quit = Input.GetKeyDown(KeyCode.Escape);
 
-		DebugNum4 = Input.GetKeyDown(KeyCode.Alpha4);
-		DebugF9 = Input.GetKeyDown(KeyCode.F9);
-		DebugF10 = Input.GetKeyDown(KeyCode.F10);
-		DebugF11 = Input.GetKeyDown(KeyCode.F11);
-		DebugF12 = Input.GetKeyDown(KeyCode.F12);
+		DebugNum4 = false;// Input.GetKeyDown(KeyCode.Alpha4);
+		DebugF9 = false;// Input.GetKeyDown(KeyCode.F9);
+		DebugF10 = false;// Input.GetKeyDown(KeyCode.F10);
+		DebugF11 = false;// Input.GetKeyDown(KeyCode.F11);
+		DebugF12 = false;// Input.GetKeyDown(KeyCode.F12);
 	}	
 
 }

@@ -33,7 +33,7 @@ public class CGenerique : MonoBehaviour {
 		m_fHeight = CGame.m_fHeight;
 
 		CSoundEngine.Init();
-		CSoundEngine.LoadBank(CGame.soundbankName);
+		CSoundEngine.LoadBank("SoundBank_GGJ2014.bnk");
 
 		CSoundEngine.postEvent("Play_MusiqueFin", gameObject);
 
